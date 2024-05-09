@@ -1,4 +1,7 @@
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.function.ToDoubleFunction;
 
 public class Inventory {
     private ArrayList<StockableProduct> arrayList;
@@ -12,38 +15,62 @@ public class Inventory {
     public void removeItem(int productID){
         for (int i = 0; i < arrayList.size(); i++)
         {
-            //getProductid and remove from the list
-            int id = 0;
-            if(productID == id)
+            int id = Integer.parseInt(arrayList.get(i).getProductId());
+            if(productID == id) {
                 arrayList.remove(i);
-
+            }
         }
-
     }
     public Product getItem(int productID){
         for (StockableProduct p : arrayList){
-            int id = 0;
-            //get id for the current item of the list
+            int id = Integer.parseInt(p.getProductId());
             if(productID == id){
-                //decremetn the number of items stocked with romoveStock method
-                return new Product();
+                p.removeStock(1);
+                return p;
             }
         }
         return null;
     }
     public void addProductStock(int productID, int numberOfNewStock){
         for (StockableProduct p : arrayList){
-            int id = 0;
-            //get id for the current item of the list
+            int id = Integer.parseInt(p.getProductId());
             if(productID == id){
-                //add number of stocks
+                p.addStock(numberOfNewStock);
             }
         }
     }
-    public void sortByPrice(){
 
+//    public class CustomComparator implements Comparator<StockableProduct> {
+//        @Override
+//        public int compare(StockableProduct o1, StockableProduct o2) {
+//            return o1.getPrice().comparingDouble(o2.getPrice());
+//        }
+//    }
+    public void sortByPrice(){
+        //Collection.sort(arrayList,Comparator.comparingDouble(StockableProduct::getPrice));
+        //arrayList.sort((a,b) -> a.getPrice().compare(b.getPrice()));
+        //using bubble sort
+        for (int i = 0; i < arrayList.size(); i++) {
+            for (int j = 0; j < arrayList.size(); j++) {
+                if(arrayList.get(j).getPrice() > arrayList.get(j+1).getPrice()){
+                    StockableProduct temp = arrayList.get(j);
+                    arrayList.set(j,arrayList.get(j+1));
+                    arrayList.set(j+1,temp);
+                }
+
+            }
+        }
     }
     public void sortByAvailableStock(){
+        for (int i = 0; i < arrayList.size(); i++) {
+            for (int j = 0; j < arrayList.size(); j++) {
+                if(arrayList.get(j).getNumberOfItemsInStock() < arrayList.get(j+1).getNumberOfItemsInStock()){
+                    StockableProduct temp = arrayList.get(j);
+                    arrayList.set(j,arrayList.get(j+1));
+                    arrayList.set(j+1,temp);
+                }
+            }
+        }
 
     }
 
