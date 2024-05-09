@@ -3,13 +3,13 @@ package labProject;
 public class Product {
 
 	  private String name;
-	  private String productId;
+	  private int productId;
 	  private double price;
 	  private String genre; 
 	  private int yearPublished;
 	  private double discount;
 
-	  public Product(String name, String productId, double price, String genre, int yearPublished, double discount) {
+	  public Product(String name, int productId, double price, String genre, int yearPublished, double discount) {
 	    this.name = name;
 	    this.productId = productId;
 	    this.price = price;
@@ -26,11 +26,11 @@ public class Product {
 	    this.name = name;
 	  }
 
-	  public String getProductId() {
+	  public int getProductId() {
 	    return productId;
 	  }
 
-	  public void setProductId(String productId) {
+	  public void setProductId(int productId) {
 	    this.productId = productId;
 	  }
 
@@ -67,18 +67,17 @@ public class Product {
 	  }
 
 	  public String getInfo() {
-	    // This method can be customized to return product information in a specific format
-	    StringBuilder info = new StringBuilder();
-	    info.append("Name: ").append(name).append("\n");
-	    info.append("Product ID: ").append(productId).append("\n");
-	    info.append("Price: $").append(String.format("%.2f", price)).append("\n");
-	    info.append("Genre: ").append(genre).append("\n");
-	    info.append("Year Published: ").append(yearPublished).append("\n");
-	    return info.toString();
-	  }
+		    String info = "";
+		    info += "Name: " + name + "\n";
+		    info += "Product ID: " + productId + "\n";
+		    info += "Price: $" + String.format("%.2f", price) + "\n";
+		    info += "Genre: " + genre + "\n";
+		    info += "Year Published: " + yearPublished + "\n";
+		    return info;
+		}
 
 	  public double calculateFinalPrice() {
-	    // This method is used to calculate the final price after applying discount
+	  
 	    return price * (1 - discount);
 	  }
 	}
