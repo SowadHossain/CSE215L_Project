@@ -1,4 +1,3 @@
-package labProject;
 
 public class Product {
 
