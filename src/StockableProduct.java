@@ -50,3 +50,10 @@ public class StockableProduct extends Product implements Stockable {
 
 
 }
+class InsufficientStockException extends Exception {
+    public InsufficientStockException(String message) {
+        super(message);
+    }
+}
+
+

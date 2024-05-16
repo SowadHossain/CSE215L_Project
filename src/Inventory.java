@@ -1,5 +1,5 @@
 
-public abstract class Product {
+abstract class Product {
 
     private String name;
     private int productId;
