@@ -9,9 +9,9 @@ public abstract class Product {
 	private int yearPublished;
 	private double discount;
 
-	public Product(int productId2, String name, double price, String genre, int yearPublished, double discount) {
+	public Product( String name,int productId, double price, String genre, int yearPublished, double discount) {
 		this.name = name;
-		this.productId = productId2;
+		this.productId = productId;
 		this.price = price;
 		this.genre = genre;
 		this.yearPublished = yearPublished;

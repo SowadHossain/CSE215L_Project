@@ -1,13 +1,11 @@
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.function.ToDoubleFunction;
+
 
 public class Inventory {
     private ArrayList<StockableProduct> items;
 
-    public Inventory(){
-
+    public Inventory(ArrayList<StockableProduct> items){
+        this.items = items;
     }
     public void addItems(StockableProduct product){
         items.add(product);
