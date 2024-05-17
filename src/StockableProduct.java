@@ -1,12 +1,13 @@
 
+
 import javax.naming.InsufficientResourcesException;
 
 public class StockableProduct extends Product implements Stockable {
 
     private int numberOfItemsStocked;
 
-    public StockableProduct(int productId, String name, double price, String genre, int yearPublished, double discount, int numberOfItemsStocked) {
-        super(productId, name, price, genre, yearPublished, discount);
+    public StockableProduct(String name , int productId, double price, String genre, int yearPublished, double discount, int numberOfItemsStocked) {
+        super(name, productId, price, genre, yearPublished, discount);
         this.numberOfItemsStocked = numberOfItemsStocked;
     }
 
@@ -18,11 +19,15 @@ public class StockableProduct extends Product implements Stockable {
     }
 
     @Override
-    public void removeStock(int num) throws InsufficientResourcesException, InsufficientStockException {
+    public void removeStock(int num)throws InsufficientResourcesException , InsufficientStockException {
         if (this.numberOfItemsStocked >= num) {
             this.numberOfItemsStocked -= num;
         } else {
-            throw new InsufficientStockException("Insufficient stock to remove " + num + " items. Current stock: " + this.numberOfItemsStocked);
+            try {
+                throw new InsufficientStockException("Insufficient stock to remove " + num + " items. Current stock: " + this.numberOfItemsStocked);
+            } catch (InsufficientStockException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
@@ -33,7 +38,7 @@ public class StockableProduct extends Product implements Stockable {
             addStock(num);
         } else if (num < 0) {
             try {
-                removeStock(-num); // Convert negative num to positive for removal
+                removeStock(-num);
             } catch (InsufficientResourcesException | InsufficientStockException e) {
 
             }
@@ -47,7 +52,6 @@ public class StockableProduct extends Product implements Stockable {
 
         return null;
     }
-
 
     public int getNumberOfItemsInStock() {
         return numberOfItemsStocked;
