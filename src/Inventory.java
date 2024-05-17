@@ -4,25 +4,25 @@ import java.util.Comparator;
 import java.util.function.ToDoubleFunction;
 
 public class Inventory {
-    private ArrayList<StockableProduct> arrayList;
+    private ArrayList<StockableProduct> items;
 
     public Inventory(){
 
     }
     public void addItems(StockableProduct product){
-        arrayList.add(product);
+        items.add(product);
     }
     public void removeItem(int productID){
-        for (int i = 0; i < arrayList.size(); i++)
+        for (int i = 0; i < items.size(); i++)
         {
-            int id = arrayList.get(i).getProductId();
+            int id = items.get(i).getProductId();
             if(productID == id) {
-                arrayList.remove(i);
+                items.remove(i);
             }
         }
     }
     public Product getItem(int productID){
-        for (StockableProduct p : arrayList){
+        for (StockableProduct p : items){
             int id = p.getProductId();
             if(productID == id){
                 try {
@@ -36,7 +36,7 @@ public class Inventory {
         return null;
     }
     public void addProductStock(int productID, int numberOfNewStock){
-        for (StockableProduct p : arrayList){
+        for (StockableProduct p : items){
             int id = p.getProductId();
             if(productID == id){
                 p.addStock(numberOfNewStock);
@@ -51,27 +51,27 @@ public class Inventory {
 //        }
 //    }
     public void sortByPrice(){
-        //Collection.sort(arrayList,Comparator.comparingDouble(StockableProduct::getPrice));
-        //arrayList.sort((a,b) -> a.getPrice().compare(b.getPrice()));
+        //Collection.sort(items,Comparator.comparingDouble(StockableProduct::getPrice));
+        //items.sort((a,b) -> a.getPrice().compare(b.getPrice()));
         //using bubble sort
-        for (int i = 0; i < arrayList.size(); i++) {
-            for (int j = 0; j < arrayList.size(); j++) {
-                if(arrayList.get(j).getPrice() > arrayList.get(j+1).getPrice()){
-                    StockableProduct temp = arrayList.get(j);
-                    arrayList.set(j,arrayList.get(j+1));
-                    arrayList.set(j+1,temp);
+        for (int i = 0; i < items.size(); i++) {
+            for (int j = 0; j < items.size(); j++) {
+                if(items.get(j).getPrice() > items.get(j+1).getPrice()){
+                    StockableProduct temp = items.get(j);
+                    items.set(j,items.get(j+1));
+                    items.set(j+1,temp);
                 }
 
             }
         }
     }
     public void sortByAvailableStock(){
-        for (int i = 0; i < arrayList.size(); i++) {
-            for (int j = 0; j < arrayList.size(); j++) {
-                if(arrayList.get(j).getNumberOfItemsInStock() < arrayList.get(j+1).getNumberOfItemsInStock()){
-                    StockableProduct temp = arrayList.get(j);
-                    arrayList.set(j,arrayList.get(j+1));
-                    arrayList.set(j+1,temp);
+        for (int i = 0; i < items.size(); i++) {
+            for (int j = 0; j < items.size(); j++) {
+                if(items.get(j).getNumberOfItemsInStock() < items.get(j+1).getNumberOfItemsInStock()){
+                    StockableProduct temp = items.get(j);
+                    items.set(j,items.get(j+1));
+                    items.set(j+1,temp);
                 }
             }
         }
