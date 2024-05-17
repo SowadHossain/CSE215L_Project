@@ -15,7 +15,7 @@ public class Inventory {
     public void removeItem(int productID){
         for (int i = 0; i < arrayList.size(); i++)
         {
-            int id = Integer.parseInt(arrayList.get(i).getProductId());
+            int id = arrayList.get(i).getProductId();
             if(productID == id) {
                 arrayList.remove(i);
             }
@@ -23,9 +23,13 @@ public class Inventory {
     }
     public Product getItem(int productID){
         for (StockableProduct p : arrayList){
-            int id = Integer.parseInt(p.getProductId());
+            int id = p.getProductId();
             if(productID == id){
-                p.removeStock(1);
+                try {
+                    p.removeStock(1);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
                 return p;
             }
         }
@@ -33,7 +37,7 @@ public class Inventory {
     }
     public void addProductStock(int productID, int numberOfNewStock){
         for (StockableProduct p : arrayList){
-            int id = Integer.parseInt(p.getProductId());
+            int id = p.getProductId();
             if(productID == id){
                 p.addStock(numberOfNewStock);
             }
