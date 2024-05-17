@@ -1,74 +1,83 @@
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.function.ToDoubleFunction;
 
-abstract class Product {
+public class Inventory {
+    private ArrayList<StockableProduct> items;
 
-    private String name;
-    private int productId;
-    private double price;
-    private String genre;
-    private int yearPublished;
-    private double discount;
+    public Inventory(){
 
-    public Product(int productId2, String name, double price, String genre, int yearPublished, double discount) {
-        this.name = name;
-        this.productId = productId2;
-        this.price = price;
-        this.genre = genre;
-        this.yearPublished = yearPublished;
-        this.discount = discount;
+    }
+    public void addItems(StockableProduct product){
+        items.add(product);
+    }
+    public void removeItem(int productID){
+        for (int i = 0; i < items.size(); i++)
+        {
+            int id = items.get(i).getProductId();
+            if(productID == id) {
+                items.remove(i);
+            }
+        }
+    }
+    public Product getItem(int productID){
+        for (StockableProduct p : items){
+            int id = p.getProductId();
+            if(productID == id){
+                try {
+                    p.removeStock(1);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+                return p;
+            }
+        }
+        return null;
+    }
+    public void addProductStock(int productID, int numberOfNewStock){
+        for (StockableProduct p : items){
+            int id = p.getProductId();
+            if(productID == id){
+                p.addStock(numberOfNewStock);
+            }
+        }
     }
 
-    public String getName() {
-        return name;
+    //    public class CustomComparator implements Comparator<StockableProduct> {
+//        @Override
+//        public int compare(StockableProduct o1, StockableProduct o2) {
+//            return o1.getPrice().comparingDouble(o2.getPrice());
+//        }
+//    }
+    public void sortByPrice(){
+        //Collection.sort(items,Comparator.comparingDouble(StockableProduct::getPrice));
+        //items.sort((a,b) -> a.getPrice().compare(b.getPrice()));
+        //using bubble sort
+        for (int i = 0; i < items.size(); i++) {
+            for (int j = 0; j < items.size(); j++) {
+                if(items.get(j).getPrice() > items.get(j+1).getPrice()){
+                    StockableProduct temp = items.get(j);
+                    items.set(j,items.get(j+1));
+                    items.set(j+1,temp);
+                }
+
+            }
+        }
+    }
+    public void sortByAvailableStock(){
+        for (int i = 0; i < items.size(); i++) {
+            for (int j = 0; j < items.size(); j++) {
+                if(items.get(j).getNumberOfItemsInStock() < items.get(j+1).getNumberOfItemsInStock()){
+                    StockableProduct temp = items.get(j);
+                    items.set(j,items.get(j+1));
+                    items.set(j+1,temp);
+                }
+            }
+        }
+
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
-    public int getProductId() {
-        return productId;
-    }
 
-    public void setProductId(int productId) {
-        this.productId = productId;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public String getGenre() {
-        return genre;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
-    public int getYearPublished() {
-        return yearPublished;
-    }
-
-    public void setYearPublished(int yearPublished) {
-        this.yearPublished = yearPublished;
-    }
-
-    public double getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(double discount) {
-        this.discount = discount;
-    }
-
-    public abstract String getInfo();
-
-    public double calculateFinalPrice() {
-
-        return price * (1 - discount);
-    }
 }

@@ -1,4 +1,4 @@
-package labProject;
+
 
 public abstract class Product {
 

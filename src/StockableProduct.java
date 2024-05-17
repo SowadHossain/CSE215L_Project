@@ -49,6 +49,9 @@ public class StockableProduct extends Product implements Stockable {
     }
 
 
+    public int getNumberOfItemsInStock() {
+        return numberOfItemsStocked;
+    }
 }
 class InsufficientStockException extends Exception {
     public InsufficientStockException(String message) {
