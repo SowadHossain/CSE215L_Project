@@ -1,5 +1,8 @@
+package entity;
 
-public class Music extends StockableProduct{
+import util.StockableProduct;
+
+public class Music extends StockableProduct {
 
     private String artistName;
 
@@ -18,13 +21,13 @@ public class Music extends StockableProduct{
 
 
     public String toString() {
-        return "Music [artistName = " + artistName + "]";
+        return "entity.Music [artistName = " + artistName + "]";
     }
 
 
     public String getInfo() {
         String string = "Name: " + super.getName();
-        string += "\nProduct Id: " + super.getProductId();
+        string += "\nutil.Product Id: " + super.getProductId();
         string += "\nYear Published: " + super.getYearPublished();
         string += "\nGenre: " + super.getGenre();
         string += "\nDiscount: " + super.getDiscount();

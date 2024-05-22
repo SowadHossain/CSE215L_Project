@@ -1,5 +1,8 @@
+package entity;
 
-public class Game extends StockableProduct{
+import util.StockableProduct;
+
+public class Game extends StockableProduct {
 
     private String developer;
 
@@ -18,13 +21,13 @@ public class Game extends StockableProduct{
 
 
     public String toString() {
-        return "Game[ developer = " + developer + "]";
+        return "entity.Game[ developer = " + developer + "]";
     }
 
 
     public String getInfo() {
         String string = "Name: " + super.getName();
-        string += "\nProduct Id: " + super.getProductId();
+        string += "\nutil.Product Id: " + super.getProductId();
         string += "\nYear Published: " + super.getYearPublished();
         string += "\nGenre: " + super.getGenre();
         string += "\nDiscount: " + super.getDiscount();

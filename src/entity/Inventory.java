@@ -1,3 +1,7 @@
+package entity;
+
+import util.*;
+
 import java.util.ArrayList;
 
 
@@ -42,14 +46,14 @@ public class Inventory {
         }
     }
 
-    //    public class CustomComparator implements Comparator<StockableProduct> {
+    //    public class CustomComparator implements Comparator<util.StockableProduct> {
 //        @Override
-//        public int compare(StockableProduct o1, StockableProduct o2) {
+//        public int compare(util.StockableProduct o1, util.StockableProduct o2) {
 //            return o1.getPrice().comparingDouble(o2.getPrice());
 //        }
 //    }
     public void sortByPrice(){
-        //Collection.sort(items,Comparator.comparingDouble(StockableProduct::getPrice));
+        //Collection.sort(items,Comparator.comparingDouble(util.StockableProduct::getPrice));
         //items.sort((a,b) -> a.getPrice().compare(b.getPrice()));
         //using bubble sort
         for (int i = 0; i < items.size(); i++) {
@@ -73,7 +77,6 @@ public class Inventory {
                 }
             }
         }
-
     }
 
 

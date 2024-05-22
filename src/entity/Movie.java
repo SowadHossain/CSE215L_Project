@@ -1,5 +1,8 @@
+package entity;
 
-public class Movie extends StockableProduct{
+import util.StockableProduct;
+
+public class Movie extends StockableProduct {
 
     private String director ;
 
@@ -19,13 +22,13 @@ public class Movie extends StockableProduct{
 
 
     public String toString() {
-        return "Movie [director = " + director + "]";
+        return "entity.Movie [director = " + director + "]";
     }
 
 
     public String getInfo() {
         String string = "Name: " + super.getName();
-        string += "\nProduct Id: " + super.getProductId();
+        string += "\nutil.Product Id: " + super.getProductId();
         string += "\nYear Published: " + super.getYearPublished();
         string += "\nGenre: " + super.getGenre();
         string += "\nDiscount: " + super.getDiscount();
