@@ -55,15 +55,22 @@ public class Invoice {
     }
     public boolean isFullHouseDiscountAvailable(){
         int movies = 0,musics = 0,games = 0;
-        //Product ids are 6 digits the first digit of the id represents the catagory;
-        // 1 for movies
-        // 2 for music
-        // 3 for games
+
         for (Product ob : cart){
-            int temp = ob.getProductId()/100000;
-            if(temp == 1) movies++;
-            else if (temp == 2) musics++;
-            else if (temp == 3) games++;
+            for(StockableProduct sp : LoadDataSaveData.getInventoryData()){\
+                if(ob.getProductId() == sp.getProductId()){
+                    if(sp.getClass().getName().contains("Movie")) {
+                        movies++;
+                        break;
+                    } else if (sp.getClass().getName().contains("Music")) {
+                        musics++;
+                        break;
+                    }else if (sp.getClass().getName().contains("Game")) {
+                        games++;
+                        break;
+                    }
+                }
+            }
         }
         if(movies >= 2 && musics >= 2 && games >= 2 )
             return true;
@@ -83,6 +90,30 @@ public class Invoice {
         return discountedPrice;
     }
 
+    public void nuberOfItemsStockOfEachSoldProduct(){
+        System.out.println("Available Stocks of Sold Products in Inventory:");
+        String st = "";
+        for (Product p: cart) {
+            for (StockableProduct ob : LoadDataSaveData.getInventoryData()) {
+                if (p.getProductId() == ob.getProductId()) {
+                    String catagory = "";
+                    if (ob.getClass().getName().contains("Movies")) {
+                        catagory = "Movie";
+                    }
+                    if (ob.getClass().getName().contains("Music")) {
+                        catagory = "Music";
+                    }
+                    if (ob.getClass().getName().contains("Game")) {
+                        catagory = "Game";
+                    }
+                    st +="Name: " + ob.getName() + ", Category " + catagory + " Items Available: " + ob.getNumberOfItemsInStock();
+                    System.out.println(st);
+                    st = "";
+                    break;
+                }
+            }
+        }
+    }
     public String getInvoice(){
         String bill = "";
         bill += "Date - " + getLocalDateTime();
