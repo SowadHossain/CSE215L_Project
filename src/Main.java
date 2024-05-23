@@ -1,4 +1,3 @@
-package project;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -134,6 +133,7 @@ public class Main {
 
         
         System.out.println("----------  End: Task 6 ----------");
+
 
     }
     
