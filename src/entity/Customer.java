@@ -1,18 +1,18 @@
 package entity;
 
 public class Customer {
-    private String name = "anonymous";
+    private String name;
     private int customerId;
     private double totalSpent;
     private int numberOfVisits;
+    private String email;
 
-    public Customer(String name,int customerID,double totalSpent, int numberOfVisits){
-        if(name != null) {
-            this.name = name;
-        }
+    public Customer(String name,int customerID,double totalSpent, int numberOfVisits,String email){
+        this.name = name;
         this.customerId = customerID;
         this.totalSpent = totalSpent;
         this.numberOfVisits = numberOfVisits;
+        this.email = email;
     }
     public void addVisit(){
         setNumberOfVisits(getNumberOfVisits() + 1);
@@ -51,5 +51,9 @@ public class Customer {
 
     public void setNumberOfVisits(int numberOfVisits) {
         this.numberOfVisits = numberOfVisits;
+    }
+
+    public String getEmail() {
+        return this.email;
     }
 }

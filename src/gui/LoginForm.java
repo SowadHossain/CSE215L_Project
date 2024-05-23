@@ -48,8 +48,12 @@ public class LoginForm extends JDialog {
         setVisible(true);
     }
     private Employee getAuthenticateUser(int id,String password){
-        Employee employee = null;
-
+        Employee employee = new Employee(null,0,null,null);
+        try {
+            LoadDataSaveData.loadEmployeeData();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         final HashMap<Integer, String> map = LoadDataSaveData.getEmployeeLoginData();
         if(map.containsKey(id)){
             employee.setEmployeeID(id);
@@ -62,7 +66,7 @@ public class LoginForm extends JDialog {
     public static void main(String[] args) {
         LoginForm loginForm = new LoginForm(null);
         Employee employee = loginForm.employee;
-        HomePage homePage = new HomePage();
+        HomePage homePage = new HomePage(null);
     }
 
 }

@@ -1,10 +1,11 @@
 package gui;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class HomePage {
+public class HomePage extends JDialog {
     private JButton newCustomerButton;
     private JButton productUpdateButton;
     private JButton updateCustomerButton;
@@ -19,11 +20,18 @@ public class HomePage {
     private JPanel MenuPanel;
 
 
-    public HomePage() {
+    public HomePage(JFrame parent) {
+        super(parent);
+        setTitle("Main Menu");
+        setContentPane(MenuPanel);
+        setMinimumSize(new Dimension(900,575));
+        setModal(true);
+        setLocationRelativeTo(parent);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         newCustomerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                System.out.println("New customer button pressed");
             }
         });
 
@@ -75,5 +83,11 @@ public class HomePage {
 
             }
         });
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        HomePage homePage = new HomePage(null);
+
     }
 }

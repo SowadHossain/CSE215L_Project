@@ -10,10 +10,10 @@ import java.util.HashMap;
 
 
 public class LoadDataSaveData {
-    static HashMap<Integer,String> employeeLoginData = new HashMap<Integer,String>();
-    static ArrayList<Customer> customerData = new ArrayList<Customer>();
-    static ArrayList<Employee> employeeData = new ArrayList<Employee>();
-    private static ArrayList<StockableProduct> inventoryData = new ArrayList<StockableProduct>();
+    public static HashMap<Integer,String> employeeLoginData = new HashMap<Integer,String>();
+        public static ArrayList<Customer> customerData = new ArrayList<Customer>();
+    public static ArrayList<Employee> employeeData = new ArrayList<Employee>();
+    public  static ArrayList<StockableProduct> inventoryData = new ArrayList<StockableProduct>();
     static File employeeDataFile = new File("data/employee_data.txt");
     static File customerDataFile = new File("data/customer_data.txt");
     static File invertoryDataFile = new File("data/inventory_data.txt");
@@ -88,11 +88,11 @@ public class LoadDataSaveData {
     }
 
 // SaveData 
-      public static void saveCustomerData(ArrayList<Customer> customerList) throws IOException {
+      public static void saveCustomerData() throws IOException {
     FileOutputStream fileOutputStream = new FileOutputStream(customerDataFile);
     ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
 
-    for (Customer customer : customerList) {
+    for (Customer customer : customerData) {
       objectOutputStream.writeObject(customer);
     }
 
@@ -100,11 +100,11 @@ public class LoadDataSaveData {
     fileOutputStream.close();
   }
 
-  public static void saveEmployeeData(ArrayList<Employee> employeeList) throws IOException {
+  public static void saveEmployeeData() throws IOException {
     FileOutputStream fileOutputStream = new FileOutputStream(employeeDataFile);
     ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
 
-    for (Employee employee : employeeList) {
+    for (Employee employee : employeeData) {
       objectOutputStream.writeObject(employee);
     }
 
@@ -112,11 +112,11 @@ public class LoadDataSaveData {
     fileOutputStream.close();
   }
 
-  public static void saveInventoryData(ArrayList<StockableProduct> inventoryList) throws IOException {
+  public static void saveInventoryData() throws IOException {
     FileOutputStream fileOutputStream = new FileOutputStream(invertoryDataFile);
     ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
 
-    for (StockableProduct product : inventoryList) {
+    for (StockableProduct product : inventoryData) {
       objectOutputStream.writeObject(product);
     }
 
