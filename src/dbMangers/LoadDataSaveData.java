@@ -2,13 +2,12 @@ package dbMangers;
 
 import entity.Customer;
 import entity.Employee;
-import entity.Inventory;
 import util.StockableProduct;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Scanner;
+
 
 public class LoadDataSaveData {
     static HashMap<Integer,String> employeeLoginData = new HashMap<Integer,String>();
@@ -88,4 +87,19 @@ public class LoadDataSaveData {
         }
     }
 
+    public static HashMap<Integer, String> getEmployeeLoginData() {
+        return employeeLoginData;
+    }
+
+    public static ArrayList<Customer> getCustomerData() {
+        return customerData;
+    }
+
+    public static ArrayList<Employee> getEmployeeData() {
+        return employeeData;
+    }
+
+    public static ArrayList<StockableProduct> getInventoryData() {
+        return inventoryData;
+    }
 }
