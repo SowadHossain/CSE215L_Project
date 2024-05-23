@@ -87,6 +87,44 @@ public class LoadDataSaveData {
         }
     }
 
+// SaveData 
+      public static void saveCustomerData(ArrayList<Customer> customerList) throws IOException {
+    FileOutputStream fileOutputStream = new FileOutputStream(customerDataFile);
+    ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+
+    for (Customer customer : customerList) {
+      objectOutputStream.writeObject(customer);
+    }
+
+    objectOutputStream.close();
+    fileOutputStream.close();
+  }
+
+  public static void saveEmployeeData(ArrayList<Employee> employeeList) throws IOException {
+    FileOutputStream fileOutputStream = new FileOutputStream(employeeDataFile);
+    ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+
+    for (Employee employee : employeeList) {
+      objectOutputStream.writeObject(employee);
+    }
+
+    objectOutputStream.close();
+    fileOutputStream.close();
+  }
+
+  public static void saveInventoryData(ArrayList<StockableProduct> inventoryList) throws IOException {
+    FileOutputStream fileOutputStream = new FileOutputStream(invertoryDataFile);
+    ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+
+    for (StockableProduct product : inventoryList) {
+      objectOutputStream.writeObject(product);
+    }
+
+    objectOutputStream.close();
+    fileOutputStream.close();
+  }
+    
+
     public static HashMap<Integer, String> getEmployeeLoginData() {
         return employeeLoginData;
     }
