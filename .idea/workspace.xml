@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="52315f5e-e0cd-44f9-9fc8-1d78fa0297d4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dbMangers/LoadDataSaveData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dbMangers/LoadDataSaveData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/LoginAndSignUp.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/LoginForm.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,7 +51,9 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW": "true",
+    "UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW": "false",
+    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW": "true",
+    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "381",
     "git-widget-placeholder": "sowad",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",

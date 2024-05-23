@@ -62,6 +62,7 @@ public class LoginForm extends JDialog {
     public static void main(String[] args) {
         LoginForm loginForm = new LoginForm(null);
         Employee employee = loginForm.employee;
+        HomePage homePage = new HomePage();
     }
 
 }
