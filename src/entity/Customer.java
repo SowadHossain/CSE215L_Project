@@ -6,11 +6,13 @@ public class Customer {
     private double totalSpent;
     private int numberOfVisits;
 
-    public Customer(String name,int customerID){
+    public Customer(String name,int customerID,double totalSpent, int numberOfVisits){
         if(name != null) {
             this.name = name;
         }
         this.customerId = customerID;
+        this.totalSpent = totalSpent;
+        this.numberOfVisits = numberOfVisits;
     }
     public void addVisit(){
         setNumberOfVisits(getNumberOfVisits() + 1);

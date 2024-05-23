@@ -4,11 +4,21 @@ public class Employee {
     private String name;
     private int employeeID;
     private String position;
+    private String password;
 
-    public Employee(String name, int id, String position){
+    public Employee(String name, int id, String position,String password){
         this.name = name;
         this.employeeID = id;
         this.position = position;
+        this.password = password;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void setName(String name) {
