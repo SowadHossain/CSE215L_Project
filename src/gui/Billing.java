@@ -1,16 +1,51 @@
 package gui;
+import dbMangers.LoadDataSaveData;
+import entity.Inventory;
+import entity.Invoice;
+import util.Product;
+
+import java.sql.SQLOutput;
+import java.util.Scanner;
 
 import javax.swing.*;
 
 public class Billing {
-    private JPanel panel1;
-    private JTextField textField1;
-    private JTextField textField2;
-    private JTextField textField3;
-    private JTextField textField4;
-    private JTextField textField5;
-    private JTextField textField6;
-    private JTextField textField7;
-    private JButton addButton;
-    private JTable table1;
+    public Billing() {
+    }
+
+    Inventory inventory= LoadDataSaveData.getInventoryData();
+    Invoice invoice = new Invoice();
+
+    Scanner scanner = new Scanner(System.in);
+
+    public void createBill(){
+
+        while (true) {
+            System.out.println("Enter product id (or type 'exit' to quit or type 'show' to show invoice): ");
+            String input = scanner.nextLine();
+            if (input.equalsIgnoreCase("exit")) {
+                break;
+            } else if (input.equalsIgnoreCase("show")) {
+                System.out.println(invoice.getInvoice());
+            }
+
+            try {
+                int productId = Integer.parseInt(input);
+
+                System.out.println("How many products you want to add: ");
+                int quantity = Integer.parseInt(scanner.nextLine());
+
+                for (int i = 0; i < quantity; i++) {
+                    invoice.addProduct(inventory.getItem(productId));
+                }
+
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid product id and quantity.");
+            }
+        }
+
+
+
+
+    }
 }
