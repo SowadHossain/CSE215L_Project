@@ -3,6 +3,7 @@ package entity;
 import java.io.Serializable;
 
 public class Employee implements Serializable {
+    private static final long serialVersionUID = 6457674334820282463L;
     private String name;
     private int employeeID;
     private String position;

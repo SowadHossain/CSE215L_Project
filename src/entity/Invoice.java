@@ -12,9 +12,7 @@ import util.*;
 public class Invoice {
     private ArrayList<Product> items;
 
-    public ArrayList<Product> getCart() {
-        return cart;
-    }
+
 
     private ArrayList<Product> cart = new ArrayList<Product>();
     private LocalDate date;
@@ -30,6 +28,9 @@ public class Invoice {
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return dateFormat.format(date);
+    }
+    public ArrayList<Product> getCart() {
+        return cart;
     }
     public void addProduct(Product product){
         cart.add(LoadDataSaveData.getInventoryData().getItem(product.getProductId()));

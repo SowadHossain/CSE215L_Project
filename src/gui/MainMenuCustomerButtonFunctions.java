@@ -7,7 +7,15 @@ import java.util.Scanner;
 
 public class MainMenuCustomerButtonFunctions {
 
-        public void CustomerInfo(){
+        public MainMenuCustomerButtonFunctions(){
+
+        }
+        public static void test(){
+            System.out.println("Test");
+            Scanner sc = new Scanner(System.in);
+            String a = sc.next();
+        }
+        public static void CustomerInfo(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter customer ID: ");
         Customer currentCustomer = null;

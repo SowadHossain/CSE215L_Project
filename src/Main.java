@@ -73,7 +73,7 @@ public class Main {
 
         invoice.addProduct(inventory.getItem(101));
         invoice.addProduct(inventory.getItem(201));
-        invoice.addProduct(inventory.getItem(301));
+        invoice.addProduct(inventory.getItem(102));
 
         invoice.getInvoice();
 
