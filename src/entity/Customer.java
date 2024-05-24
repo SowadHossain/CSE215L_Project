@@ -58,4 +58,12 @@ public class Customer implements Serializable {
     public String getEmail() {
         return this.email;
     }
+
+// overriden toString method
+    
+  public String toString() {
+		String myString = "The name of the Customer is: "+getName()+"\nThe Customer ID is:"+getCustomerId()+"\nThe email address is:"+getEmail()+"\nThe total spent is:"+getTotalSpent()+"\nThe number of visits are:"+getNumberOfVisits()+"";
+		
+		return myString;
+	}
 }
