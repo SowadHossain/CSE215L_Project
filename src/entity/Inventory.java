@@ -46,12 +46,6 @@ public class Inventory {
         }
     }
 
-    //    public class CustomComparator implements Comparator<util.StockableProduct> {
-//        @Override
-//        public int compare(util.StockableProduct o1, util.StockableProduct o2) {
-//            return o1.getPrice().comparingDouble(o2.getPrice());
-//        }
-//    }
     public void sortByPrice(){
         //Collection.sort(items,Comparator.comparingDouble(util.StockableProduct::getPrice));
         //items.sort((a,b) -> a.getPrice().compare(b.getPrice()));

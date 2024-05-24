@@ -9,13 +9,9 @@
       <change beforePath="$PROJECT_DIR$/out/production/Invertory Mangement and Billing Softwere/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Invertory Mangement and Billing Softwere/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dbMangers/LoadDataSaveData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dbMangers/LoadDataSaveData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Inventory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Invoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Invoice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Movie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Music.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Music.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/Product.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/util/StockableProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/StockableProduct.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

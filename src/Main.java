@@ -52,7 +52,11 @@ public class Main {
         inventory.addItems(g3);
 
         System.out.println(inventory.getItem(202).getInfo());
-        //
+        try{
+            LoadDataSaveData.saveInventoryData();
+        }catch (Exception e){
+
+        }
 
         System.out.println("main");
 

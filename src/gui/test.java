@@ -2,7 +2,9 @@ package gui;
 
 import dbMangers.LoadDataSaveData;
 import entity.Customer;
+import entity.Inventory;
 import entity.Invoice;
+import util.Product;
 import util.StockableProduct;
 
 import javax.swing.*;
@@ -14,6 +16,7 @@ public class test extends javax.swing.JFrame {
     private StockableProduct currentStockableProduct ;
     private Customer currentCustomer;
     private int quantity;
+    private Inventory inventory;
 
     public test() {
 
@@ -35,6 +38,7 @@ public class test extends javax.swing.JFrame {
         }catch (Exception e){
             e.printStackTrace();
         }
+        inventory = LoadDataSaveData.getInventoryData();
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -409,32 +413,26 @@ public class test extends javax.swing.JFrame {
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {
         int productId =Integer.parseInt( jTextField4.getText());
-        StockableProduct stockableProduct;
-        //System.out.println("test1 " + LoadDataSaveData.inventoryData.size());
-
-//        for(StockableProduct stockableProduct1 : LoadDataSaveData.inventoryData){
-//            System.out.println("In for each loop");
-//            if(stockableProduct1.getProductId() == productId){
-//                stockableProduct = stockableProduct1;
-//                currentStockableProduct = stockableProduct;
-//                jTextField4.setText(""+stockableProduct.getProductId());
-//                jTextField5.setText(stockableProduct.getName());
-//                jTextField7.setText(""+stockableProduct.getNumberOfItemsInStock());
-//            }
-//        }
+        System.out.println(inventory.getItems().size() +" <-size.");
+        for (StockableProduct st : inventory.getItems()) {
+            System.out.println("int the loop 1" + " "+st.getName() +" " + st.getProductId());
+            if (st.getProductId() == productId) {
+                jTextField4.setText("" + st.getProductId());
+                jTextField5.setText(st.getName());
+                jTextField7.setText("" + st.getNumberOfItemsInStock());
+            }
+        }
     }
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {
         String productName = jTextField5.getText();
-        StockableProduct stockableProduct;
-//        for(StockableProduct stockableProduct1 : LoadDataSaveData.inventoryData){
-//            if(stockableProduct1.getName() == productName){
-//                stockableProduct = stockableProduct1;
-//                currentStockableProduct = stockableProduct;
-//                jTextField4.setText(""+stockableProduct.getProductId());
-//                jTextField5.setText(stockableProduct.getName());
-//                jTextField7.setText(""+stockableProduct.getNumberOfItemsInStock());
-//            }
-//        }
+        System.out.println(inventory.getItems().size() +" <-size.");
+        for (StockableProduct st : inventory.getItems()) {
+            if (st.getName() == productName) {
+                jTextField4.setText("" + st.getProductId());
+                jTextField5.setText(st.getName());
+                jTextField7.setText("" + st.getNumberOfItemsInStock());
+            }
+        }
     }
 
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {
@@ -477,37 +475,37 @@ public class test extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(test.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(test.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(test.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(test.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new test().setVisible(true);
-//            }
-//        });
-//    }
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(test.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(test.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(test.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(test.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new test().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify                     
     private javax.swing.JButton jButton1;

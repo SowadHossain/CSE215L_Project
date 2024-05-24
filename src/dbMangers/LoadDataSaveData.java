@@ -63,20 +63,23 @@ public class LoadDataSaveData {
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
         while (flag){
             try{
-                System.out.println("IN try block");
                 Object ob = objectInputStream.readObject();
-                if(ob.getClass().getName().contains("Movie")) {
-                    Movie movie = (Movie) ob;
+                System.out.println(ob.getClass().getName());
+                if(ob instanceof Movie) {
+                    Movie movie = (Movie)ob;
+                    System.out.println("Reading objects");
                     inventoryData.addItems(movie);
+                    System.out.println(movie.getInfo());
                 }
-                else if(ob.getClass().getName().contains("Music")) {
-                    Music music = (Music) ob;
+                else if(ob instanceof Music) {
+                    Music music = (Music)ob;
                     inventoryData.addItems(music);
                 }
-                else if(ob.getClass().getName().contains("Game")) {
+                else if(ob instanceof Game) {
                     Game game = (Game) ob;
                     inventoryData.addItems(game);
                 }
+
 
 
             }catch (EOFException eofException){
@@ -85,10 +88,9 @@ public class LoadDataSaveData {
             }catch (ClassNotFoundException e){
                 System.out.println("Class not found");
                 objectInputStream.close();
-                flag = false;
             }catch (Exception e){
                 e.printStackTrace();
-                flag= false;
+
             }
         }
     }
@@ -122,7 +124,7 @@ public class LoadDataSaveData {
     FileOutputStream fileOutputStream = new FileOutputStream(invertoryDataFile);
     ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
 
-    for (StockableProduct product : inventoryData.getItems()) {
+    for (Object product : inventoryData.getItems()) {
         objectOutputStream.writeObject(product);
     }
 
