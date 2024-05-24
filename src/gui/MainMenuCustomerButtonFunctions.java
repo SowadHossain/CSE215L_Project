@@ -24,8 +24,7 @@ public class MainMenuCustomerButtonFunctions {
             System.out.println("Customer ID: " + currentCustomer.getCustomerId());
             System.out.println("Total Spent: $" + currentCustomer.getTotalSpent());
             System.out.println("Number of Visits: " + currentCustomer.getNumberOfVisits());
-        }
-        public void
+
     }
 
 }

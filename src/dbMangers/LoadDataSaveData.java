@@ -1,7 +1,7 @@
-/*
 package dbMangers;
 
 import entity.*;
+import util.Product;
 import util.StockableProduct;
 
 import java.io.*;
@@ -122,15 +122,18 @@ public class LoadDataSaveData {
   }
 
   public static void saveInventoryData() throws IOException {
-    FileOutputStream fileOutputStream = new FileOutputStream(invertoryDataFile);
-    ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+        FileWriter fileWriter = new FileWriter(invertoryDataFile);
 
-    for (Object product : inventoryData.getItems()) {
-        objectOutputStream.writeObject(product);
+
+
+    for (StockableProduct product : inventoryData.getItems()) {
+        if(product instanceof Music){
+            fileWriter.write("Music");
+            fileWriter.write(product.toString());
+        }
     }
 
-    objectOutputStream.close();
-    fileOutputStream.close();
+    fileWriter.close();
   }
 
 
@@ -150,9 +153,8 @@ public class LoadDataSaveData {
         return inventoryData;
     }
 }
-*/
 
-
+/*
 
 
 // new LoadDataSaveData for toString() method with buffered reader and writer
@@ -227,3 +229,4 @@ public class LoadDataSaveData {
   }
 }
 
+*/

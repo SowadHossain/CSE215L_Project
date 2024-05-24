@@ -36,6 +36,7 @@ public class LoginForm extends JDialog {
                 employee = getAuthenticateUser(userId,userPassword);
                 if(employee != null){
                     dispose();
+                    HomePage homePage = new HomePage(null);
                 }
                 else {
                     JOptionPane.showMessageDialog(LoginForm.this,
@@ -62,11 +63,4 @@ public class LoginForm extends JDialog {
 
         return employee;
     }
-
-    public static void main(String[] args) {
-        LoginForm loginForm = new LoginForm(null);
-        Employee employee = loginForm.employee;
-        HomePage homePage = new HomePage(null);
-    }
-
 }

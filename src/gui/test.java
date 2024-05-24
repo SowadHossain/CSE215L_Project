@@ -23,6 +23,13 @@ public class test extends JDialog{
     public test(JFrame parent) {
         super(parent);
         initComponents();
+        setTitle("Bill");
+        setContentPane(getContentPane());
+        setMinimumSize(new Dimension(1180,550));
+        setModal(true);
+        setLocationRelativeTo(parent);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setVisible(true);
     }
 
     /**
@@ -41,7 +48,7 @@ public class test extends JDialog{
             e.printStackTrace();
         }
         inventory = LoadDataSaveData.getInventoryData();
-
+        jPanel = new JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -200,7 +207,7 @@ public class test extends JDialog{
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -511,7 +518,9 @@ public class test extends JDialog{
         test ts = new test(null);
     }
 
-    // Variables declaration - do not modify                     
+    // Variables declaration - do not modify
+    private JPanel jPanel;
+    javax.swing.GroupLayout layout;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

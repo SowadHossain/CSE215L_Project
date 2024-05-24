@@ -33,6 +33,7 @@ public class HomePage extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("New customer button pressed");
             }
+                //MainMenuCustomerButtonFunctions;
         });
 
         updateCustomerButton.addActionListener(new ActionListener() {
@@ -80,15 +81,11 @@ public class HomePage extends JDialog {
         billingButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                test t = new test(null);
+                dispose();
+                test test = new test(null);
             }
         });
         setVisible(true);
     }
 
-    public void main(String[] args) {
-        dispose();
-        HomePage homePage = new HomePage(null);
-
-    }
 }
