@@ -1,18 +1,20 @@
 package entity;
 
-public class Customer {
-    private String name = "anonymous";
+import java.io.Serializable;
+
+public class Customer implements Serializable {
+    private String name;
     private int customerId;
     private double totalSpent;
     private int numberOfVisits;
+    private String email;
 
-    public Customer(String name,int customerID,double totalSpent, int numberOfVisits){
-        if(name != null) {
-            this.name = name;
-        }
+    public Customer(String name,int customerID,double totalSpent, int numberOfVisits,String email){
+        this.name = name;
         this.customerId = customerID;
         this.totalSpent = totalSpent;
         this.numberOfVisits = numberOfVisits;
+        this.email = email;
     }
     public void addVisit(){
         setNumberOfVisits(getNumberOfVisits() + 1);
@@ -52,4 +54,17 @@ public class Customer {
     public void setNumberOfVisits(int numberOfVisits) {
         this.numberOfVisits = numberOfVisits;
     }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+// overridden toString method
+    
+  public String toString() {
+		String myString = "The name of the Customer is: "+getName()+"\nThe Customer ID is:"+getCustomerId()+"\nThe email address is:"+getEmail()+"\nThe total spent is:"+getTotalSpent()+"\nThe number of visits are:"+getNumberOfVisits()+"";
+		
+	  return myString;
+	}
+	
 }

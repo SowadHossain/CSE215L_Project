@@ -1,20 +1,21 @@
 package dbMangers;
 
-import entity.Customer;
-import entity.Employee;
-import entity.Inventory;
+import entity.*;
+import util.Product;
 import util.StockableProduct;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.Scanner;
 
+
 public class LoadDataSaveData {
-    static HashMap<Integer,String> employeeLoginData = new HashMap<Integer,String>();
-    static ArrayList<Customer> customerData = new ArrayList<Customer>();
-    static ArrayList<Employee> employeeData = new ArrayList<Employee>();
-    private static ArrayList<StockableProduct> inventoryData = new ArrayList<StockableProduct>();
+    public static HashMap<Integer,String> employeeLoginData = new HashMap<Integer,String>();
+    public static ArrayList<Customer> customerData = new ArrayList<Customer>();
+    public static ArrayList<Employee> employeeData = new ArrayList<Employee>();
+    public  static Inventory inventoryData = new Inventory(new ArrayList<StockableProduct>());
     static File employeeDataFile = new File("data/employee_data.txt");
     static File customerDataFile = new File("data/customer_data.txt");
     static File invertoryDataFile = new File("data/inventory_data.txt");
@@ -33,16 +34,6 @@ public class LoadDataSaveData {
                 objectInputStream.close();
             }
         }
-
-//
-//        Scanner sc = new Scanner(customerDataFile);
-//        while (sc.hasNext()){
-//            String name = sc.next();
-//            int id =  sc.nextInt();
-//            double totalSpent  = sc.nextDouble();
-//            int numberOfVisits = sc.nextInt();
-//            customerData.add(new Customer(name,id,totalSpent,numberOfVisits));
-//        }
     }
     public static void loadEmployeeData() throws IOException {
         boolean flag = true;
@@ -56,36 +47,206 @@ public class LoadDataSaveData {
             }catch (EOFException eofException){
                 flag = false;
                 objectInputStream.close();
-            }catch (Exception e){
+            }catch (ClassNotFoundException e){
+                System.out.println("Class not found");
                 objectInputStream.close();
+                flag = false;
+            }catch (Exception e){
+                e.printStackTrace();
+                flag= false;
             }
         }
-
-//        Scanner sc = new Scanner(employeeDataFile);
-//        while (sc.hasNext()){
-//            String UserName = sc.next();
-//            String Password = sc.next();
-//            int UserID =  sc.nextInt();
-//            String UserPosition = sc.next();
-//            employeeLoginData.put(UserID,Password);
-//            employeeData.add(new Employee(UserName,UserID,UserPosition,Password));
-//        }
     }
     public static void loadInventoryData() throws IOException {
-        boolean flag = true;
-        FileInputStream fileInputStream = new FileInputStream(invertoryDataFile);
-        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-        while (flag){
-            try{
-                StockableProduct stockableProduct = (StockableProduct) objectInputStream.readObject();
-                inventoryData.add(stockableProduct);
-            }catch (EOFException eofException){
-                flag = false;
-                objectInputStream.close();
-            }catch (Exception e){
-                objectInputStream.close();
+        Scanner fileReader = new Scanner(invertoryDataFile);
+        while (fileReader.hasNext()){
+            System.out.println(inventoryData.getItems().size());
+            String catagory = fileReader.next();
+            System.out.println(catagory + inventoryData.getItems().size());
+
+            if(catagory.contains("Movie")){
+                int productId; String name; double price; int yearPublished; String genre; double discount; int numberOfItemsStocked; String director;
+                productId = Integer.parseInt(String.valueOf(fileReader.next()));
+                name = String.valueOf(fileReader.next());
+                price = Double.parseDouble(String.valueOf(fileReader.next()));
+                yearPublished = Integer.parseInt(String.valueOf(fileReader.next()));
+                genre = String.valueOf(fileReader.next());
+                discount = Double.parseDouble(String.valueOf(fileReader.next()));
+                numberOfItemsStocked = Integer.parseInt(String.valueOf(fileReader.next()));
+                director = String.valueOf(fileReader.nextLine());
+                LoadDataSaveData.getInventoryData().addItems(new Movie(productId,name,price,yearPublished,genre,discount,numberOfItemsStocked,director));
+            }if(catagory.contains("Music")){
+                int productId; String name; double price; int yearPublished; String genre; double discount; int numberOfItemsStocked; String artistName;
+                productId = Integer.parseInt(String.valueOf(fileReader.next()));
+                name = String.valueOf(fileReader.next());
+                price = Double.parseDouble(String.valueOf(fileReader.next()));
+                yearPublished = Integer.parseInt(String.valueOf(fileReader.next()));
+                genre = String.valueOf(fileReader.next());
+                discount = Double.parseDouble(String.valueOf(fileReader.next()));
+                numberOfItemsStocked = Integer.parseInt(String.valueOf(fileReader.next()));
+                artistName = String.valueOf(fileReader.nextLine());
+                LoadDataSaveData.getInventoryData().addItems(new Music(productId,name,price,yearPublished,genre,discount,numberOfItemsStocked,artistName));
+            }if(catagory.contains("Game")){
+                int productId; String name; double price; int yearPublished; String genre; double discount; int numberOfItemsStocked; String devoloper;
+                productId = Integer.parseInt(String.valueOf(fileReader.next()));
+                name = String.valueOf(fileReader.next());
+                price = Double.parseDouble(String.valueOf(fileReader.next()));
+                yearPublished = Integer.parseInt(String.valueOf(fileReader.next()));
+                genre = String.valueOf(fileReader.next());
+                discount = Double.parseDouble(String.valueOf(fileReader.next()));
+                numberOfItemsStocked = Integer.parseInt(String.valueOf(fileReader.next()));
+                devoloper = String.valueOf(fileReader.nextLine());
+                LoadDataSaveData.getInventoryData().addItems(new Game(productId,name,price,yearPublished,genre,discount,numberOfItemsStocked,devoloper));
             }
         }
     }
 
+// SaveData 
+    public static void saveCustomerData() throws IOException {
+
+        FileOutputStream fileOutputStream = new FileOutputStream(customerDataFile);
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+
+        for (Customer customer : customerData) {
+            objectOutputStream.writeObject(customer);
+        }
+
+        objectOutputStream.close();
+        fileOutputStream.close();
+    }
+
+  public static void saveEmployeeData() throws IOException {
+    FileOutputStream fileOutputStream = new FileOutputStream(employeeDataFile);
+    ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+
+    for (Employee employee : employeeData) {
+      objectOutputStream.writeObject(employee);
+    }
+
+    objectOutputStream.close();
+    fileOutputStream.close();
+  }
+
+  public static void saveInventoryData() throws IOException {
+        FileWriter fileWriter = new FileWriter(invertoryDataFile);
+
+    for (Object product : inventoryData.getItems()) {
+        if(product instanceof Music){
+            Music music = (Music) product;
+            fileWriter.write("Music");
+            fileWriter.write(" ");
+            fileWriter.write(music.toString());
+            fileWriter.write("\n");
+        }
+        else if(product instanceof Movie){
+            Movie movie = (Movie) product;
+            fileWriter.write("Music");
+            fileWriter.write("\n");
+            fileWriter.write(movie.toString());
+            fileWriter.write("\n");
+        }else if(product instanceof Game){
+            Game game = (Game) product;
+            fileWriter.write("Music");
+            fileWriter.write("\n");
+            fileWriter.write(game.toString());
+            fileWriter.write("\n");
+        }
+    }
+
+    fileWriter.close();
+  }
+
+
+    public static HashMap<Integer, String> getEmployeeLoginData() {
+        return employeeLoginData;
+    }
+
+    public static ArrayList<Customer> getCustomerData() {
+        return customerData;
+    }
+
+    public static ArrayList<Employee> getEmployeeData() {
+        return employeeData;
+    }
+
+    public static Inventory getInventoryData() {
+        return inventoryData;
+    }
 }
+
+/*
+
+
+// new LoadDataSaveData for toString() method with buffered reader and writer
+
+
+package dbMangers;
+
+import entity.*;
+import util.StockableProduct;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Objects;
+
+
+public class LoadDataSaveData {
+  public static HashMap<Integer, String> employeeLoginData = new HashMap<Integer, String>();
+  public static ArrayList<Customer> customerData = new ArrayList<Customer>();
+  public static ArrayList<Employee> employeeData = new ArrayList<Employee>();
+  public static Inventory inventoryData = new Inventory(new ArrayList<StockableProduct>());
+
+  static File employeeDataFile = new File("data/employee_data.txt");
+  static File customerDataFile = new File("data/customer_data.txt");
+  static File inventoryDataFile = new File("data/inventory_data.txt");
+
+  public static void loadCustomerData() throws IOException {
+    BufferedReader reader = new BufferedReader(new FileReader(customerDataFile));
+    String line;
+    while ((line = reader.readLine()) != null) {
+   
+      Customer customer = parseCustomerData(line);
+      customerData.add(customer);
+    }
+    reader.close();
+  }
+
+  public static void loadEmployeeData() throws IOException {
+    BufferedReader reader = new BufferedReader(new FileReader(employeeDataFile));
+    String line;
+    while ((line = reader.readLine()) != null) {
+     
+      Employee employee = parseEmployeeData(line);
+      employeeData.add(employee);
+      employeeLoginData.put(employee.getEmployeeID(), employee.getPassword());
+    }
+    reader.close();
+  }
+
+
+  // SaveData
+
+  
+  public static void saveCustomerData() throws IOException {
+    BufferedWriter writer = new BufferedWriter(new FileWriter(customerDataFile));
+    for (Customer customer : customerData) {
+      
+      writer.write(formatCustomerData(customer));
+      writer.newLine();
+    }
+    writer.close();
+  }
+
+
+  public static void saveEmployeeData() throws IOException {
+    BufferedWriter writer = new BufferedWriter(new FileWriter(employeeDataFile));
+    for (Employee employee : employeeData) {
+      writer.write(formatEmployeeData(employee));
+      writer.newLine();
+    }
+    writer.close();
+  }
+}
+
+*/

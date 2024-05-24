@@ -1,6 +1,9 @@
 package entity;
 
-public class Employee {
+import java.io.Serializable;
+
+public class Employee implements Serializable {
+    private static final long serialVersionUID = 6457674334820282463L;
     private String name;
     private int employeeID;
     private String position;
@@ -43,5 +46,14 @@ public class Employee {
 
     public String getPosition() {
         return position;
+    }
+
+ // overridden toString method
+    
+    public String toString() {
+	String myString = "The name of the Employee is: "+getName()+"\nThe Employee ID is:"+getEmployeeID()+"\nThe position is:"+getPosition();
+		
+	   return myString;
+	
     }
 }

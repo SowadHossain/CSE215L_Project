@@ -1,5 +1,6 @@
 package entity;
 
+import dbMangers.LoadDataSaveData;
 import util.*;
 
 import java.util.ArrayList;
@@ -23,10 +24,11 @@ public class Inventory {
             }
         }
     }
-    public Product getItem(int productID){
+    public Product getItem(int ProductID){
+        System.out.println(items.size());
         for (StockableProduct p : items){
             int id = p.getProductId();
-            if(productID == id){
+            if(ProductID == id){
                 try {
                     p.removeStock(1);
                 }catch (Exception e){
@@ -46,12 +48,6 @@ public class Inventory {
         }
     }
 
-    //    public class CustomComparator implements Comparator<util.StockableProduct> {
-//        @Override
-//        public int compare(util.StockableProduct o1, util.StockableProduct o2) {
-//            return o1.getPrice().comparingDouble(o2.getPrice());
-//        }
-//    }
     public void sortByPrice(){
         //Collection.sort(items,Comparator.comparingDouble(util.StockableProduct::getPrice));
         //items.sort((a,b) -> a.getPrice().compare(b.getPrice()));
@@ -67,6 +63,9 @@ public class Inventory {
             }
         }
     }
+    public ArrayList<StockableProduct> getItems(){
+        return items;
+    }
     public void sortByAvailableStock(){
         for (int i = 0; i < items.size(); i++) {
             for (int j = 0; j < items.size(); j++) {
@@ -78,7 +77,4 @@ public class Inventory {
             }
         }
     }
-
-
-
 }

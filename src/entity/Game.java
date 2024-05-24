@@ -2,7 +2,9 @@ package entity;
 
 import util.StockableProduct;
 
-public class Game extends StockableProduct {
+import java.io.Serializable;
+
+public class Game extends StockableProduct implements Serializable {
 
     private String developer;
 
@@ -21,9 +23,12 @@ public class Game extends StockableProduct {
 
 
     public String toString() {
-        return "entity.Game[ developer = " + developer + "]";
+        return " "+ super.getProductId()+ " " +super.getName() +
+                " " + super.getPrice() + " " + super.getYearPublished() +
+                " " + super.getGenre() + " "+ super.getDiscount() +
+                " " + super.getNumberOfItemsInStock() +
+                " " + getDeveloper() +" ";
     }
-
 
     public String getInfo() {
         String string = "Name: " + super.getName();

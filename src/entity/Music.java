@@ -1,12 +1,23 @@
 package entity;
 
+import util.Product;
 import util.StockableProduct;
 
-public class Music extends StockableProduct {
+import java.io.Serializable;
+
+public class Music extends StockableProduct implements Serializable {
 
     private String artistName;
 
-    public Music( int productId, String name, double price, int yearPublished, String genre, double discount, int numberOfItemsStocked, String artistName) {
+    public Music( int productId, String name, double price, int yearPublished, String genre, double discount, int numberOfItemsStocked){
+        super(name, productId,  price,  genre,  yearPublished,  discount,  numberOfItemsStocked);
+    }
+
+    public String getArtistName() {
+        return artistName;
+    }
+
+    public Music(int productId, String name, double price, int yearPublished, String genre, double discount, int numberOfItemsStocked, String artistName) {
         super(name, productId,  price,  genre,  yearPublished,  discount,  numberOfItemsStocked);
         this.artistName = artistName ;
     }
@@ -21,7 +32,11 @@ public class Music extends StockableProduct {
 
 
     public String toString() {
-        return "entity.Music [artistName = " + artistName + "]";
+        return " "+ super.getProductId()+ " " +super.getName() +
+                " " + super.getPrice() + " " + super.getYearPublished() +
+                " " + super.getGenre() + " "+ super.getDiscount() +
+                " " + super.getNumberOfItemsInStock() +
+                " " + getArtistName() + " " ;
     }
 
 

@@ -5,17 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="52315f5e-e0cd-44f9-9fc8-1d78fa0297d4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_13_2024_3_44_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_13_2024_3_44_PM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Invertory Mangement and Billing Softwere.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Invertory Mangement and Billing Softwere.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Invertory Mangement and Billing Softwere/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Invertory Mangement and Billing Softwere/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dbMangers/loadEmployeeData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dbMangers/loadInventory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dbMangers/saveCustomerData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dbMangers/saveEmployeeData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dbMangers/saveInventory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/Billing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/Billing.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,13 +44,19 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.HomePage.executor": "Run",
     "Application.Login.executor": "Run",
     "Application.LoginForm.executor": "Run",
     "Application.Main.executor": "Run",
+    "Application.RemoveProductFromBill.executor": "Run",
+    "Application.lalala.executor": "Run",
+    "Application.test.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW": "true",
+    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW": "true",
+    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "235",
     "git-widget-placeholder": "sowad",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
@@ -99,5 +96,19 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.io.NotSerializableException" package="java.io" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
