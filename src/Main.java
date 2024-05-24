@@ -11,7 +11,13 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
-//
+        Customer c1 = new Customer("sowad",999,100,1,"email@email.com");
+        Customer c2 = new Customer("test",998,100,1,"email2@email.com");
+
+        LoadDataSaveData.getCustomerData().add(c1);
+        LoadDataSaveData.getCustomerData().add(c2);
+
+
 //        Music m1 = new Music(101, "Kodaline", 5.00, 2010, "Inde", 2.00, 50, "Alex Turner");
 //        Music m2 = new Music(102, "Kodaline2", 5.00, 2010, "Inde", 2.00, 50, "Alex Turner");
 //        Music m3 = new Music(103, "Kodaline3", 5.00, 2010, "Inde", 2.00, 50, "Alex Turner");
@@ -64,6 +70,8 @@ public class Main {
 
         Inventory inventory = LoadDataSaveData.getInventoryData();
         try {
+            LoadDataSaveData.saveCustomerData();
+            LoadDataSaveData.loadCustomerData();
             LoadDataSaveData.loadInventoryData();
         }catch (Exception e){
 

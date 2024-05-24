@@ -35,7 +35,7 @@ public class HomePage extends JDialog {
         setLocationRelativeTo(parent);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
-        newCustomerButton.addActionListener(new ActionListener() {
+        customerDetailsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
@@ -53,14 +53,16 @@ public class HomePage extends JDialog {
         });
 
 
-//        newCustomerButton.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                System.out.println("New customer button pressed");
-//            }
-//                //MainMenuCustomerButtonFunctions;
-//
-//        });
+        newCustomerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                btnFucntion.addCustomer();
+                setVisible(true);
+            }
+                //MainMenuCustomerButtonFunctions;
+
+        });
 //
 //        updateCustomerButton.addActionListener(new ActionListener() {
 //            @Override
@@ -111,6 +113,10 @@ public class HomePage extends JDialog {
             }
         });
         setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        HomePage homePage = new HomePage(null);
     }
 
 }
