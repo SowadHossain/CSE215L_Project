@@ -80,13 +80,14 @@ public class HomePage extends JDialog {
         billingButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                test t = new test(null);
             }
         });
         setVisible(true);
     }
 
-    public static void main(String[] args) {
+    public void main(String[] args) {
+        dispose();
         HomePage homePage = new HomePage(null);
 
     }

@@ -8,9 +8,11 @@ import util.Product;
 import util.StockableProduct;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-
-public class test extends javax.swing.JFrame {
+public class test extends JDialog{
 
     Invoice invoice = new Invoice();
     private StockableProduct currentStockableProduct ;
@@ -18,8 +20,8 @@ public class test extends javax.swing.JFrame {
     private int quantity;
     private Inventory inventory;
 
-    public test() {
-
+    public test(JFrame parent) {
+        super(parent);
         initComponents();
     }
 
@@ -32,7 +34,7 @@ public class test extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
         try {
-            LoadDataSaveData.loadInventoryData();
+            //LoadDataSaveData.loadInventoryData();
             LoadDataSaveData.loadEmployeeData();
             LoadDataSaveData.loadCustomerData();
         }catch (Exception e){
@@ -79,7 +81,7 @@ public class test extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
         jLabel1.setIcon(new javax.swing.ImageIcon("images/bill.png")); // NOI18N
 
@@ -191,7 +193,7 @@ public class test extends javax.swing.JFrame {
 
         jButton3.setText("Print");
 
-        jButton4.setText("Close");
+        jButton4.setText("Remove Items");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -470,6 +472,7 @@ public class test extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        RemoveProductFromBill removeProductFromBill = new RemoveProductFromBill(null);
     }
 
     /**
@@ -502,9 +505,10 @@ public class test extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new test().setVisible(true);
+                new test(null).setVisible(true);
             }
         });
+        test ts = new test(null);
     }
 
     // Variables declaration - do not modify                     

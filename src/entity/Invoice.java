@@ -11,6 +11,11 @@ import util.*;
 
 public class Invoice {
     private ArrayList<Product> items;
+
+    public ArrayList<Product> getCart() {
+        return cart;
+    }
+
     private ArrayList<Product> cart;
     private LocalDate date;
 
