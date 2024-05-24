@@ -24,9 +24,12 @@ public class Movie extends StockableProduct implements Serializable {
 
 
     public String toString() {
-        return "entity.Movie [director = " + director + "]";
+        return ""+ super.getProductId()+ " " +super.getName() +
+                " " + super.getPrice() + " " + super.getYearPublished() +
+                " " + super.getGenre() + " "+ super.getDiscount() +
+                " " + super.getNumberOfItemsInStock() +
+                " " + getDirector() ;
     }
-
 
     public String getInfo() {
         String string = "Name: " + super.getName();

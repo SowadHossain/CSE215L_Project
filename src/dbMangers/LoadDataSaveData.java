@@ -8,6 +8,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
+import java.util.Scanner;
 
 
 public class LoadDataSaveData {
@@ -55,59 +56,61 @@ public class LoadDataSaveData {
                 flag= false;
             }
         }
-
     }
     public static void loadInventoryData() throws IOException {
-        boolean flag = true;
-        System.out.println("test loadinvertory 1");
-        FileInputStream fileInputStream = new FileInputStream(invertoryDataFile);
-        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-        while (flag){
-            try{
-                Object ob = objectInputStream.readObject();
-                System.out.println(ob.getClass().getName());
-                if(ob instanceof Movie) {
-                    Movie movie = (Movie)ob;
-                    System.out.println("Reading objects");
-                    inventoryData.addItems(movie);
-                    System.out.println(movie.getInfo());
-                }
-                else if(ob instanceof Music) {
-                    Music music = (Music)ob;
-                    inventoryData.addItems(music);
-                }
-                else if(ob instanceof Game) {
-                    Game game = (Game) ob;
-                    inventoryData.addItems(game);
-                }
-
-
-
-            }catch (EOFException eofException){
-                flag = false;
-                objectInputStream.close();
-            }catch (ClassNotFoundException e){
-                System.out.println("Class not found");
-                objectInputStream.close();
-            }catch (Exception e){
-                e.printStackTrace();
-
+        Scanner fileReader = new Scanner(invertoryDataFile);
+        while (fileReader.hasNext()){
+            String catagory = String.valueOf(fileReader.next());
+            if(catagory == "Movie"){
+                int productId; String name; double price; int yearPublished; String genre; double discount; int numberOfItemsStocked; String director;
+                productId = Integer.parseInt(String.valueOf(fileReader.next()));
+                name = String.valueOf(fileReader.next());
+                price = Double.parseDouble(String.valueOf(fileReader.next()));
+                yearPublished = Integer.parseInt(String.valueOf(fileReader.next()));
+                genre = String.valueOf(fileReader.next());
+                discount = Double.parseDouble(String.valueOf(fileReader.next()));
+                numberOfItemsStocked = Integer.parseInt(String.valueOf(fileReader.next()));
+                director = String.valueOf(fileReader.next());
+                LoadDataSaveData.getInventoryData().addItems(new Movie(productId,name,price,yearPublished,genre,discount,numberOfItemsStocked,director));
+            }if(catagory == "Music"){
+                int productId; String name; double price; int yearPublished; String genre; double discount; int numberOfItemsStocked; String artistName;
+                productId = Integer.parseInt(String.valueOf(fileReader.next()));
+                name = String.valueOf(fileReader.next());
+                price = Double.parseDouble(String.valueOf(fileReader.next()));
+                yearPublished = Integer.parseInt(String.valueOf(fileReader.next()));
+                genre = String.valueOf(fileReader.next());
+                discount = Double.parseDouble(String.valueOf(fileReader.next()));
+                numberOfItemsStocked = Integer.parseInt(String.valueOf(fileReader.next()));
+                artistName = String.valueOf(fileReader.next());
+                LoadDataSaveData.getInventoryData().addItems(new Music(productId,name,price,yearPublished,genre,discount,numberOfItemsStocked,artistName));
+            }if(catagory == "Game"){
+                int productId; String name; double price; int yearPublished; String genre; double discount; int numberOfItemsStocked; String devoloper;
+                productId = Integer.parseInt(String.valueOf(fileReader.next()));
+                name = String.valueOf(fileReader.next());
+                price = Double.parseDouble(String.valueOf(fileReader.next()));
+                yearPublished = Integer.parseInt(String.valueOf(fileReader.next()));
+                genre = String.valueOf(fileReader.next());
+                discount = Double.parseDouble(String.valueOf(fileReader.next()));
+                numberOfItemsStocked = Integer.parseInt(String.valueOf(fileReader.next()));
+                devoloper = String.valueOf(fileReader.next());
+                LoadDataSaveData.getInventoryData().addItems(new Game(productId,name,price,yearPublished,genre,discount,numberOfItemsStocked,devoloper));
             }
         }
     }
 
 // SaveData 
-      public static void saveCustomerData() throws IOException {
-    FileOutputStream fileOutputStream = new FileOutputStream(customerDataFile);
-    ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+    public static void saveCustomerData() throws IOException {
 
-    for (Customer customer : customerData) {
-      objectOutputStream.writeObject(customer);
+        FileOutputStream fileOutputStream = new FileOutputStream(customerDataFile);
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+
+        for (Customer customer : customerData) {
+            objectOutputStream.writeObject(customer);
+        }
+
+        objectOutputStream.close();
+        fileOutputStream.close();
     }
-
-    objectOutputStream.close();
-    fileOutputStream.close();
-  }
 
   public static void saveEmployeeData() throws IOException {
     FileOutputStream fileOutputStream = new FileOutputStream(employeeDataFile);
@@ -124,12 +127,20 @@ public class LoadDataSaveData {
   public static void saveInventoryData() throws IOException {
         FileWriter fileWriter = new FileWriter(invertoryDataFile);
 
-
-
-    for (StockableProduct product : inventoryData.getItems()) {
+    for (Object product : inventoryData.getItems()) {
         if(product instanceof Music){
+            Music music = (Music) product;
             fileWriter.write("Music");
-            fileWriter.write(product.toString());
+            fileWriter.write(music.toString());
+        }
+        else if(product instanceof Movie){
+            Movie movie = (Movie) product;
+            fileWriter.write("Music");
+            fileWriter.write(movie.toString());
+        }else if(product instanceof Game){
+            Game game = (Game) product;
+            fileWriter.write("Music");
+            fileWriter.write(game.toString());
         }
     }
 

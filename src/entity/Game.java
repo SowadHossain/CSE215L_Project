@@ -23,9 +23,12 @@ public class Game extends StockableProduct implements Serializable {
 
 
     public String toString() {
-        return "entity.Game[ developer = " + developer + "]";
+        return ""+ super.getProductId()+ " " +super.getName() +
+                " " + super.getPrice() + " " + super.getYearPublished() +
+                " " + super.getGenre() + " "+ super.getDiscount() +
+                " " + super.getNumberOfItemsInStock() +
+                " " + getDeveloper() ;
     }
-
 
     public String getInfo() {
         String string = "Name: " + super.getName();
