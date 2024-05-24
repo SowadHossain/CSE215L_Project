@@ -11,8 +11,12 @@ import javax.swing.*;
 public class test extends javax.swing.JFrame {
 
     Invoice invoice = new Invoice();
+    private StockableProduct currentStockableProduct ;
+    private Customer currentCustomer;
+    private int quantity;
 
     public test() {
+
         initComponents();
     }
 
@@ -24,6 +28,13 @@ public class test extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
+        try {
+            LoadDataSaveData.loadInventoryData();
+            LoadDataSaveData.loadEmployeeData();
+            LoadDataSaveData.loadCustomerData();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -83,7 +94,7 @@ public class test extends javax.swing.JFrame {
 
         jLabel8.setText("Name");
 
-        jTextField1.setText(" ");
+        jTextField1.setText("");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -92,7 +103,7 @@ public class test extends javax.swing.JFrame {
 
         jLabel9.setText("ID:");
 
-        jTextField2.setText(" ");
+        jTextField2.setText("");
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
@@ -101,7 +112,7 @@ public class test extends javax.swing.JFrame {
 
         jLabel10.setText("Email");
 
-        jTextField3.setText(" ");
+        jTextField3.setText("");
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);
@@ -112,7 +123,7 @@ public class test extends javax.swing.JFrame {
 
         jLabel12.setText("Product ID:");
 
-        jTextField4.setText(" ");
+        jTextField4.setText("");
 
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -352,11 +363,16 @@ public class test extends javax.swing.JFrame {
 
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {
+
         String name = jTextField1.getText();
         Customer customer;
+        System.out.println("above loop");
+        System.out.println("size: "+LoadDataSaveData.customerData.size());
         for(Customer customer1 : LoadDataSaveData.customerData){
+            System.out.println("in the loop");
                 if(customer1.getName() == name){
                     customer = customer1;
+                    currentCustomer = customer;
                     jTextField1.setText(customer.getName());
                     jTextField2.setText(""+customer.getCustomerId());
                     jTextField3.setText(customer.getEmail());
@@ -367,8 +383,10 @@ public class test extends javax.swing.JFrame {
         int id = Integer.parseInt(jTextField2.getText());
         Customer customer;
         for(Customer customer1 : LoadDataSaveData.customerData){
+            System.out.println(customer1.getCustomerId() +" "+ customer1.getName());
             if(customer1.getCustomerId() == id){
                 customer = customer1;
+                currentCustomer = customer;
                 jTextField1.setText(customer.getName());
                 jTextField2.setText(""+customer.getCustomerId());
                 jTextField3.setText(customer.getEmail());
@@ -381,6 +399,7 @@ public class test extends javax.swing.JFrame {
         for(Customer customer1 : LoadDataSaveData.customerData){
             if(customer1.getEmail() == email){
                 customer = customer1;
+                currentCustomer = customer;
                 jTextField1.setText(customer.getName());
                 jTextField2.setText(""+customer.getCustomerId());
                 jTextField3.setText(customer.getEmail());
@@ -391,36 +410,60 @@ public class test extends javax.swing.JFrame {
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {
         int productId =Integer.parseInt( jTextField4.getText());
         StockableProduct stockableProduct;
-        for(StockableProduct stockableProduct1 : LoadDataSaveData.inventoryData){
-            if(stockableProduct1.getProductId() == productId){
-                stockableProduct = stockableProduct1;
-                jTextField4.setText(""+stockableProduct.getProductId());
-                jTextField5.setText(stockableProduct.getName());
-                jTextField7.setText(""+stockableProduct.getNumberOfItemsInStock());
-            }
-        }
+        //System.out.println("test1 " + LoadDataSaveData.inventoryData.size());
+
+//        for(StockableProduct stockableProduct1 : LoadDataSaveData.inventoryData){
+//            System.out.println("In for each loop");
+//            if(stockableProduct1.getProductId() == productId){
+//                stockableProduct = stockableProduct1;
+//                currentStockableProduct = stockableProduct;
+//                jTextField4.setText(""+stockableProduct.getProductId());
+//                jTextField5.setText(stockableProduct.getName());
+//                jTextField7.setText(""+stockableProduct.getNumberOfItemsInStock());
+//            }
+//        }
     }
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {
         String productName = jTextField5.getText();
         StockableProduct stockableProduct;
-        for(StockableProduct stockableProduct1 : LoadDataSaveData.inventoryData){
-            if(stockableProduct1.getName() == productName){
-                stockableProduct = stockableProduct1;
-                jTextField4.setText(""+stockableProduct.getProductId());
-                jTextField5.setText(stockableProduct.getName());
-                jTextField7.setText(""+stockableProduct.getNumberOfItemsInStock());
-            }
-        }
+//        for(StockableProduct stockableProduct1 : LoadDataSaveData.inventoryData){
+//            if(stockableProduct1.getName() == productName){
+//                stockableProduct = stockableProduct1;
+//                currentStockableProduct = stockableProduct;
+//                jTextField4.setText(""+stockableProduct.getProductId());
+//                jTextField5.setText(stockableProduct.getName());
+//                jTextField7.setText(""+stockableProduct.getNumberOfItemsInStock());
+//            }
+//        }
     }
 
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {
-        int quantity =Integer.parseInt( jTextField6.getText());
-        invoice.addProduct();
-
+        quantity =Integer.parseInt( jTextField6.getText());
+        if(currentStockableProduct.getNumberOfItemsInStock()< quantity){
+                quantity=-1;
+        }
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        //Add button
+        System.out.println("Button pressed");
+        for (int i = 0; i < quantity; i++) {
+            System.out.println(currentStockableProduct.getInfo());
+        }
+        if(quantity == -1){
+            JOptionPane.showMessageDialog(test.this,
+                    "Not Enough sotcks",
+                    "Try Again",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        else {
+            for (int i = 0; i < quantity; i++) {
+                System.out.println(currentStockableProduct.getInfo());
+                invoice.addProduct(currentStockableProduct);
+            }
+        }
+        jTextField8.setText(invoice.getInvoice());
     }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
@@ -434,37 +477,37 @@ public class test extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(test.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(test.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(test.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(test.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new test().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(test.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(test.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(test.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(test.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new test().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify                     
     private javax.swing.JButton jButton1;

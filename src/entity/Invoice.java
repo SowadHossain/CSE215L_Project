@@ -2,7 +2,9 @@ package entity;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Objects;
+import java.util.Date;
+import java.time.ZoneId;
+
 
 import dbMangers.LoadDataSaveData;
 import util.*;
@@ -17,34 +19,17 @@ public class Invoice {
     }
     public String getLocalDateTime (){
         LocalDate localDate = LocalDate.now();
+        Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        return dateFormat.format(localDate);
+        return dateFormat.format(date);
     }
     public void addProduct(Product product){
-        StockableProduct tempSotckableProduct;
-        for (int i = 0; i < LoadDataSaveData.getInventoryData().size(); i++) {
-            tempSotckableProduct = LoadDataSaveData.getInventoryData().get(i);
-            if(tempSotckableProduct.getName() == product.getName()){
-                if(tempSotckableProduct.getNumberOfItemsInStock() == 0){
-                    break;
-                }else{
-                    cart.add(product);
-                    LoadDataSaveData.getInventoryData().get(i).editStock(-1);
-                    break;
-                }
-            }
-        }
+        cart.add(LoadDataSaveData.getInventoryData().getItem(product.getProductId()));
     }
     public void removeProduct(Product product){
         cart.remove(product);
-        StockableProduct tempSotckableProduct;
-        for (int i = 0; i < LoadDataSaveData.getInventoryData().size(); i++) {
-            tempSotckableProduct = LoadDataSaveData.getInventoryData().get(i);
-            if(tempSotckableProduct.getName() == product.getName()){
-                    LoadDataSaveData.getInventoryData().get(i).editStock(1);
-                    break;
-            }
-        }
+        LoadDataSaveData.getInventoryData().addProductStock(product.getProductId(),1);
     }
     private double calculatePriceWithoutDiscount(){
         double totalPrice = 0;
@@ -57,7 +42,7 @@ public class Invoice {
         int movies = 0,musics = 0,games = 0;
 
         for (Product ob : cart){
-            for(StockableProduct sp : LoadDataSaveData.getInventoryData()){
+            for(StockableProduct sp : LoadDataSaveData.getInventoryData().getItems()){
                 if(ob.getProductId() == sp.getProductId()){
                     if(sp.getClass().getName().contains("Movie")) {
                         movies++;
@@ -94,7 +79,7 @@ public class Invoice {
         System.out.println("Available Stocks of Sold Products in Inventory:");
         String st = "";
         for (Product p: cart) {
-            for (StockableProduct ob : LoadDataSaveData.getInventoryData()) {
+            for (StockableProduct ob : LoadDataSaveData.getInventoryData().getItems()) {
                 if (p.getProductId() == ob.getProductId()) {
                     String catagory = "";
                     if (ob.getClass().getName().contains("Movies")) {

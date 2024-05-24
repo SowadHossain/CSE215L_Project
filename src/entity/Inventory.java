@@ -67,6 +67,9 @@ public class Inventory {
             }
         }
     }
+    public ArrayList<StockableProduct> getItems(){
+        return items;
+    }
     public void sortByAvailableStock(){
         for (int i = 0; i < items.size(); i++) {
             for (int j = 0; j < items.size(); j++) {

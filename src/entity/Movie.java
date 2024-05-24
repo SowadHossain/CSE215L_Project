@@ -2,7 +2,9 @@ package entity;
 
 import util.StockableProduct;
 
-public class Movie extends StockableProduct {
+import java.io.Serializable;
+
+public class Movie extends StockableProduct implements Serializable {
 
     private String director ;
 

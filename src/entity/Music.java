@@ -2,10 +2,15 @@ package entity;
 
 import util.StockableProduct;
 
-public class Music extends StockableProduct {
+import java.io.Serializable;
+
+public class Music extends StockableProduct implements Serializable {
 
     private String artistName;
 
+    public Music( int productId, String name, double price, int yearPublished, String genre, double discount, int numberOfItemsStocked){
+        super(name, productId,  price,  genre,  yearPublished,  discount,  numberOfItemsStocked);
+    }
     public Music( int productId, String name, double price, int yearPublished, String genre, double discount, int numberOfItemsStocked, String artistName) {
         super(name, productId,  price,  genre,  yearPublished,  discount,  numberOfItemsStocked);
         this.artistName = artistName ;

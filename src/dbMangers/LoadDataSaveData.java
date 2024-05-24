@@ -1,19 +1,19 @@
 package dbMangers;
 
-import entity.Customer;
-import entity.Employee;
+import entity.*;
 import util.StockableProduct;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 
 public class LoadDataSaveData {
     public static HashMap<Integer,String> employeeLoginData = new HashMap<Integer,String>();
-        public static ArrayList<Customer> customerData = new ArrayList<Customer>();
+    public static ArrayList<Customer> customerData = new ArrayList<Customer>();
     public static ArrayList<Employee> employeeData = new ArrayList<Employee>();
-    public  static ArrayList<StockableProduct> inventoryData = new ArrayList<StockableProduct>();
+    public  static Inventory inventoryData = new Inventory(new ArrayList<StockableProduct>());
     static File employeeDataFile = new File("data/employee_data.txt");
     static File customerDataFile = new File("data/customer_data.txt");
     static File invertoryDataFile = new File("data/inventory_data.txt");
@@ -32,16 +32,6 @@ public class LoadDataSaveData {
                 objectInputStream.close();
             }
         }
-
-//
-//        Scanner sc = new Scanner(customerDataFile);
-//        while (sc.hasNext()){
-//            String name = sc.next();
-//            int id =  sc.nextInt();
-//            double totalSpent  = sc.nextDouble();
-//            int numberOfVisits = sc.nextInt();
-//            customerData.add(new Customer(name,id,totalSpent,numberOfVisits));
-//        }
     }
     public static void loadEmployeeData() throws IOException {
         boolean flag = true;
@@ -55,34 +45,50 @@ public class LoadDataSaveData {
             }catch (EOFException eofException){
                 flag = false;
                 objectInputStream.close();
-            }catch (Exception e){
+            }catch (ClassNotFoundException e){
+                System.out.println("Class not found");
                 objectInputStream.close();
+                flag = false;
+            }catch (Exception e){
+                e.printStackTrace();
+                flag= false;
             }
         }
 
-//        Scanner sc = new Scanner(employeeDataFile);
-//        while (sc.hasNext()){
-//            String UserName = sc.next();
-//            String Password = sc.next();
-//            int UserID =  sc.nextInt();
-//            String UserPosition = sc.next();
-//            employeeLoginData.put(UserID,Password);
-//            employeeData.add(new Employee(UserName,UserID,UserPosition,Password));
-//        }
     }
     public static void loadInventoryData() throws IOException {
         boolean flag = true;
+        System.out.println("test loadinvertory 1");
         FileInputStream fileInputStream = new FileInputStream(invertoryDataFile);
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
         while (flag){
             try{
-                StockableProduct stockableProduct = (StockableProduct) objectInputStream.readObject();
-                inventoryData.add(stockableProduct);
+                System.out.println("IN try block");
+                Object ob = objectInputStream.readObject();
+                if(ob.getClass().getName().contains("Movie")) {
+                    Movie movie = (Movie) ob;
+                    inventoryData.addItems(movie);
+                }
+                else if(ob.getClass().getName().contains("Music")) {
+                    Music music = (Music) ob;
+                    inventoryData.addItems(music);
+                }
+                else if(ob.getClass().getName().contains("Game")) {
+                    Game game = (Game) ob;
+                    inventoryData.addItems(game);
+                }
+
+
             }catch (EOFException eofException){
                 flag = false;
                 objectInputStream.close();
-            }catch (Exception e){
+            }catch (ClassNotFoundException e){
+                System.out.println("Class not found");
                 objectInputStream.close();
+                flag = false;
+            }catch (Exception e){
+                e.printStackTrace();
+                flag= false;
             }
         }
     }
@@ -116,8 +122,8 @@ public class LoadDataSaveData {
     FileOutputStream fileOutputStream = new FileOutputStream(invertoryDataFile);
     ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
 
-    for (StockableProduct product : inventoryData) {
-      objectOutputStream.writeObject(product);
+    for (StockableProduct product : inventoryData.getItems()) {
+        objectOutputStream.writeObject(product);
     }
 
     objectOutputStream.close();
@@ -137,7 +143,7 @@ public class LoadDataSaveData {
         return employeeData;
     }
 
-    public static ArrayList<StockableProduct> getInventoryData() {
+    public static Inventory getInventoryData() {
         return inventoryData;
     }
 }

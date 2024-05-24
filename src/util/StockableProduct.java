@@ -13,6 +13,7 @@ public class StockableProduct extends Product implements Stockable {
 
 
 
+
     @Override
     public void addStock(int num) {
         this.numberOfItemsStocked += num;
