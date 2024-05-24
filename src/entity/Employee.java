@@ -46,4 +46,12 @@ public class Employee implements Serializable {
     public String getPosition() {
         return position;
     }
+
+ // overriden toString method
+    
+    public String toString() {
+	String myString = "The name of the Employee is: "+getName()+"\nThe Employee ID is:"+getEmployeeID()+"\nThe position is:"+getPosition();
+		
+	   return myString;
+	
 }
