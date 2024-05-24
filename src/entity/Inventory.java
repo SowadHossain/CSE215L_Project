@@ -1,5 +1,6 @@
 package entity;
 
+import dbMangers.LoadDataSaveData;
 import util.*;
 
 import java.util.ArrayList;
@@ -23,10 +24,11 @@ public class Inventory {
             }
         }
     }
-    public Product getItem(int productID){
+    public Product getItem(int ProductID){
+        System.out.println(items.size());
         for (StockableProduct p : items){
             int id = p.getProductId();
-            if(productID == id){
+            if(ProductID == id){
                 try {
                     p.removeStock(1);
                 }catch (Exception e){

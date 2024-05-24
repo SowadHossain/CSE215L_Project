@@ -16,11 +16,13 @@ public class Invoice {
         return cart;
     }
 
-    private ArrayList<Product> cart;
+    private ArrayList<Product> cart = new ArrayList<Product>();
     private LocalDate date;
 
     public Invoice(){
 
+    }public Invoice(ArrayList<Product> products){
+        cart = products;
     }
     public String getLocalDateTime (){
         LocalDate localDate = LocalDate.now();

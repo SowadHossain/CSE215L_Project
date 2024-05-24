@@ -10,18 +10,25 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
+
+
+        Inventory inventory = LoadDataSaveData.getInventoryData();
+
         //loading data
         System.out.println("test" );
         try {
-            System.out.println("test" );
-            LoadDataSaveData.loadCustomerData();
-            System.out.println("test" );
             LoadDataSaveData.loadInventoryData();
-            System.out.println("test" );
-            LoadDataSaveData.loadEmployeeData();
         }catch (Exception e){
             e.printStackTrace();
         }
+
+        Invoice invoice = new Invoice();
+
+        invoice.addProduct(inventory.getItem(101));
+        invoice.addProduct(inventory.getItem(201));
+        invoice.addProduct(inventory.getItem(301));
+
+        invoice.getInvoice();
 
         System.out.println("test2");
         LoginForm loginForm = new LoginForm(null);
