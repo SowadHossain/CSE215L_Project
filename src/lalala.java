@@ -1,7 +1,5 @@
-package project;
 
 
-import dbMangers.LoadDataSaveData;
 import entity.*;
 import util.Product;
 import util.StockableProduct;
@@ -19,202 +17,102 @@ import java.util.Date;
 import java.util.Iterator;
 
 
+import java.util.Collections;
+import java.util.Comparator;
+
+////////////////////
+
 
 public class lalala {
     public static void main(String[] args) {
-
         Scanner input = new Scanner(System.in);
 
-        Inventory inventory = LoadDataSaveData.getInventoryData();
-        Invoice invoice = new Invoice();
-
-        // taking input for Music objects
-//        System.out.println("Enter number of music items to add:");
-//        int numberOfMusicItems = input.nextInt();
-//        input.nextLine();
-//
-//        for (int i = 0; i < numberOfMusicItems; i++) {
-//            System.out.println("Enter details for Music item " + (i + 1) + ":");
-//            System.out.print("Product ID: ");
-//            int id = input.nextInt();
-//            input.nextLine();
-//            System.out.print("Name: ");
-//            String name = input.nextLine();
-//            System.out.print("Price: ");
-//            double price = input.nextDouble();
-//            System.out.print("Year: ");
-//            int year = input.nextInt();
-//            input.nextLine();
-//            System.out.print("Genre: ");
-//            String genre = input.nextLine();
-//            System.out.print("Discount: ");
-//            double discount = input.nextDouble();
-//            System.out.print("Number of items in stock: ");
-//            int numberOfItemsInStock = input.nextInt();
-//            input.nextLine();
-//            System.out.print("Artist: ");
-//            String artist = input.nextLine();
-//
-//            Music music = new Music(id, name, price, year, genre, discount, numberOfItemsInStock, artist);
-//            inventory.addItems(music);
-//        }
-//
-//        //  taking input for Movie objects
-//        System.out.println("Enter number of movie items to add:");
-//        int numberOfMovieItems = input.nextInt();
-//        input.nextLine();
-//
-//        for (int i = 0; i < numberOfMovieItems; i++) {
-//            System.out.println("Enter details for Movie item " + (i + 1) + ":");
-//            System.out.print("ID: ");
-//            int id = input.nextInt();
-//            input.nextLine();
-//            System.out.print("Name: ");
-//            String name = input.nextLine();
-//            System.out.print("Price: ");
-//            double price = input.nextDouble();
-//            System.out.print("Year: ");
-//            int year = input.nextInt();
-//            input.nextLine();
-//            System.out.print("Genre: ");
-//            String genre = input.nextLine();
-//            System.out.print("Discount: ");
-//            double discount = input.nextDouble();
-//            System.out.print("Number of items in stock: ");
-//            int numberOfItemsInStock = input.nextInt();
-//            input.nextLine();
-//            System.out.print("Director: ");
-//            String director = input.nextLine();
-//
-//            Movie movie = new Movie(id, name, price, year, genre, discount, numberOfItemsInStock, director);
-//            inventory.addItems(movie);
-//        }
-//
-//        // Example of taking input for Game objects
-//        System.out.println("Enter number of game items to add:");
-//        int numberOfGameItems = input.nextInt();
-//        input.nextLine();
-//
-//        for (int i = 0; i < numberOfGameItems; i++) {
-//            System.out.println("Enter details for Game item " + (i + 1) + ":");
-//            System.out.print("ID: ");
-//            int id = input.nextInt();
-//            input.nextLine();
-//            System.out.print("Name: ");
-//            String name = input.nextLine();
-//            System.out.print("Price: ");
-//            double price = input.nextDouble();
-//            System.out.print("Year: ");
-//            int year = input.nextInt();
-//            input.nextLine();
-//            System.out.print("Genre: ");
-//            String genre = input.nextLine();
-//            System.out.print("Discount: ");
-//            double discount = input.nextDouble();
-//            System.out.print("Number of items in stock: ");
-//            int numberOfItemsInStock = input.nextInt();
-//            input.nextLine();
-//            System.out.print("Developer: ");
-//            String developer = input.nextLine();
-//
-//            Game game = new Game(id, name, price, year, genre, discount, numberOfItemsInStock, developer);
-//            inventory.addItems(game);
-//        }
+        Music m1 = new Music(101, "submarine", 20.0, 2011, "Indie", 2.00, 50, "Alex_Turner");
+        Music m2 = new Music(102, "AM ", 10.0, 2010, "Indie", 2.00, 50, "Kodaline");
 
 
+        Movie v1 = new Movie(201, "Good Will Hunting", 5.0, 1997, "Drama", 3.0, 50, "Gus_Van_Sant");
+        Movie v2 = new Movie(202, "Life Is Beautiful", 20, 1997, "Comedy-Drama", 2.6, 126, "Roberto_Benigni");
 
-        try {
-            LoadDataSaveData.getInventoryData();
-        }catch (Exception e){}
+        Game g1 = new Game(301, "Red Dead Redemption 2", 29, 2018, "Survival", 3.7, 560, "RockStar");
+        Game g2 = new Game(302, "God of War", 12, 2018, "Action", 5.6, 567, "Javaground");
+        ArrayList<StockableProduct> st = new ArrayList<StockableProduct>();
+        Inventory inventory = new Inventory(st);
+
+        inventory.addItems(m1);
+        inventory.addItems(m2);
 
 
-//        try (FileWriter writer = new FileWriter("output.txt")) {
-//            for (StockableProduct i : inventory.getItems()) {
-//                writer.write(i.getInfo() + System.lineSeparator());
-//            }
-//
-//            writer.write("----------  End: Task 1 ----------" + System.lineSeparator());
-//
-//            ArrayList<Product> productsForInvoice_task2 = new ArrayList<Product>();
-//
-//            productsForInvoice_task2.add(inventory.getItem(101));
-//            productsForInvoice_task2.add(inventory.getItem(102));
-//            productsForInvoice_task2.add(inventory.getItem(201));
-//            productsForInvoice_task2.add(inventory.getItem(202));
-//            productsForInvoice_task2.add(inventory.getItem(301));
-//            productsForInvoice_task2.add(inventory.getItem(302));
-//
+        inventory.addItems(v1);
+        inventory.addItems(v2);
 
-        //    Invoice invoice_task2 = new Invoice(productsForInvoice_task2);
 
-            ArrayList<Product> productsForInvoice_task10 = new ArrayList<Product>();  ////////////////
-            productsForInvoice_task10.add(inventory.getItem(101));
-            productsForInvoice_task10.add(inventory.getItem(102));
-            productsForInvoice_task10.add(inventory.getItem(201));
-            productsForInvoice_task10.add(inventory.getItem(202));
-                            ////////////////
+        inventory.addItems(g1);
+        inventory.addItems(g2);
 
-            invoice = new Invoice(productsForInvoice_task10);
-//
-//            writer.write(invoice_task2.getInvoice() + System.lineSeparator());
-//            writer.write("----------  End: Task 2 ----------" + System.lineSeparator());
-//
-//            ArrayList<Product> productsForInvoice_task3 = new ArrayList<Product>();
-//
-//            productsForInvoice_task3.add(inventory.getItem(101));
-//            productsForInvoice_task3.add(inventory.getItem(102));
-//            productsForInvoice_task3.add(inventory.getItem(201));
-//            productsForInvoice_task3.add(inventory.getItem(202));
-//            productsForInvoice_task3.add(inventory.getItem(301));
-//            productsForInvoice_task3.add(inventory.getItem(302));
-//
-//            Invoice invoice_task_3 = new Invoice(productsForInvoice_task3);
-//
-//            writer.write(invoice_task_3.getInvoice() + System.lineSeparator());
-//            writer.write("----------  End: Task 3 ----------" + System.lineSeparator());
-//
-//            for (StockableProduct i : inventory.getItems()) {
-//                if (i.getClass().getName().contains("Game")) {
-//                    if (i.getNumberOfItemsInStock() > 0) {
-//                        writer.write(i.getName() + System.lineSeparator());
-//                    }
-//                }
-//            }
-//
-//            writer.write("----------  End: Task 4 ----------" + System.lineSeparator());
-//
-        System.out.println("Size : " + invoice.getCart().size());
-            for (Product p : invoice.getCart()){
-                System.out.println(p.getPrice());
-            }
-            inventory.sortByPrice();
 
-            for (Product p : invoice.getCart()){
-                System.out.println(p.getPrice());
+        try (FileWriter writer = new FileWriter("output.txt")) {
+            for (StockableProduct i : inventory.getItems()) {
+                writer.write(i.getInfo() + System.lineSeparator());
             }
 
-//            for (StockableProduct i : inventory.getItems()) {
-//                if (i.getClass().getName().contains("Music")) {
-//                    writer.write("Name: " + i.getName() + ", Price: " + i.getPrice() + System.lineSeparator());
-//                    break;
-//                }
-//            }
-//
-//            writer.write("----------  End: Task 5 ----------" + System.lineSeparator());
-//
-//            for (StockableProduct i : inventory.getItems()) {
-//                if (i.getClass().getName().contains("Movie")) {
-//                    if (i.getInfo().toLowerCase().contains(("Francis Ford Coppola").toLowerCase())) {
-//                        writer.write(i.getName() + System.lineSeparator());
-//                    }
-//                }
-//            }
-//
-//            writer.write("----------  End: Task 6 ----------" + System.lineSeparator());
-//        } catch (IOException e) {
-//            System.out.println("Exception occured while writing!");
-//        }
-//
+            writer.write("----------  End: Task 1 ----------" + System.lineSeparator());
+
+            ArrayList<Product> productsForInvoice_task2 = new ArrayList<Product>();
+
+            productsForInvoice_task2.add(inventory.getItem(101));
+            productsForInvoice_task2.add(inventory.getItem(102));
+            productsForInvoice_task2.add(inventory.getItem(201));
+            productsForInvoice_task2.add(inventory.getItem(202));
+            productsForInvoice_task2.add(inventory.getItem(301));
+            productsForInvoice_task2.add(inventory.getItem(302));
+
+            Invoice invoice_task2 = new Invoice(productsForInvoice_task2);
+
+            writer.write(invoice_task2.getInvoice() + System.lineSeparator());
+            writer.write("----------  End: Task 2 ----------" + System.lineSeparator());
+
+
+            ArrayList<Product> productsForInvoice_task3 = new ArrayList<Product>();
+
+            productsForInvoice_task3.add(inventory.getItem(101));
+            productsForInvoice_task3.add(inventory.getItem(102));
+            productsForInvoice_task3.add(inventory.getItem(201));
+            productsForInvoice_task3.add(inventory.getItem(202));
+            productsForInvoice_task3.add(inventory.getItem(301));
+            productsForInvoice_task3.add(inventory.getItem(302));
+
+            Invoice invoice_task_3 = new Invoice(productsForInvoice_task3);
+
+            writer.write(invoice_task_3.getInvoice() + System.lineSeparator());
+            writer.write("----------  End: Task 3 ----------" + System.lineSeparator());
+
+            for (StockableProduct i : inventory.getItems()) {
+                if (i.getClass().getName().contains("Game")) {
+                    if (i.getNumberOfItemsInStock() > 0) {
+                        writer.write(i.getName() + System.lineSeparator());
+                    }
+                }
+            }
+
+            writer.write("----------  End: Task 4 ----------" + System.lineSeparator());
+
+
+            writer.write("----------  End: Task 5 ----------");
+
+            for (StockableProduct i : inventory.getItems()) {
+                if (i.getClass().getName().contains("Movie")) {
+                    if (i.getInfo().toLowerCase().contains(("Francis Ford Coppola").toLowerCase())) {
+                        writer.write(i.getName() + System.lineSeparator());
+                    }
+                }
+            }
+
+            writer.write("----------  End: Task 6 ----------" + System.lineSeparator());
+        } catch (IOException e) {
+            System.out.println("Exception occured while writing!");
+        }
+
 
         // reading from a file
 
@@ -234,9 +132,5 @@ public class lalala {
 
 
     }
-
-
-
 }
-
 

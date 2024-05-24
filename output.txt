@@ -1,1 +1,73 @@
+Name: submarine
+util.Product Id: 101
+Year Published: 2011
+Genre: Indie
+Discount: 2.0
+Price: 20.0
+Artist's Name: Alex_Turner
+
+Name: AM 
+util.Product Id: 102
+Year Published: 2010
+Genre: Indie
+Discount: 2.0
+Price: 10.0
+Artist's Name: Kodaline
+
+Name: Good Will Hunting
+util.Product Id: 201
+Year Published: 1997
+Genre: Drama
+Discount: 3.0
+Price: 5.0
+Director's Name: Gus_Van_Sant
+
+Name: Life Is Beautiful
+util.Product Id: 202
+Year Published: 1997
+Genre: Comedy-Drama
+Discount: 2.6
+Price: 20.0
+Director's Name: Roberto_Benigni
+
+Name: Red Dead Redemption 2
+util.Product Id: 301
+Year Published: 2018
+Genre: Survival
+Discount: 3.7
+Price: 29.0
+Developer's Name: RockStar
+
+Name: God of War
+util.Product Id: 302
+Year Published: 2018
+Genre: Action
+Discount: 5.6
+Price: 12.0
+Developer's Name: Javaground
+
 ----------  End: Task 1 ----------
+Date - 2024-05-24 00:00:00
+Name: Alex_Turner, Price: 20.0
+Name: Kodaline, Price: 10.0
+Name: Good Will Hunting, Price: 5.0
+Name: Life Is Beautiful, Price: 20.0
+Name: Red Dead Redemption 2, Price: 29.0
+Name: God of War, Price: 12.0
+Total Price : 96.0
+Price after discount: 92.98500000000001
+----------  End: Task 2 ----------
+Date - 2024-05-24 00:00:00
+Name: Alex_Turner, Price: 20.0
+Name: Kodaline, Price: 10.0
+Name: Good Will Hunting, Price: 5.0
+Name: Life Is Beautiful, Price: 20.0
+Name: Red Dead Redemption 2, Price: 29.0
+Name: God of War, Price: 12.0
+Total Price : 96.0
+Price after discount: 92.98500000000001
+----------  End: Task 3 ----------
+Red Dead Redemption 2
+God of War
+----------  End: Task 4 ----------
+----------  End: Task 5 --------------------  End: Task 6 ----------
