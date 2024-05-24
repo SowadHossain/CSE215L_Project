@@ -1,3 +1,4 @@
+/*
 package dbMangers;
 
 import entity.*;
@@ -149,3 +150,80 @@ public class LoadDataSaveData {
         return inventoryData;
     }
 }
+*/
+
+
+
+
+// new LoadDataSaveData for toString() method with buffered reader and writer
+
+
+package dbMangers;
+
+import entity.*;
+import util.StockableProduct;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Objects;
+
+
+public class LoadDataSaveData {
+  public static HashMap<Integer, String> employeeLoginData = new HashMap<Integer, String>();
+  public static ArrayList<Customer> customerData = new ArrayList<Customer>();
+  public static ArrayList<Employee> employeeData = new ArrayList<Employee>();
+  public static Inventory inventoryData = new Inventory(new ArrayList<StockableProduct>());
+
+  static File employeeDataFile = new File("data/employee_data.txt");
+  static File customerDataFile = new File("data/customer_data.txt");
+  static File inventoryDataFile = new File("data/inventory_data.txt");
+
+  public static void loadCustomerData() throws IOException {
+    BufferedReader reader = new BufferedReader(new FileReader(customerDataFile));
+    String line;
+    while ((line = reader.readLine()) != null) {
+   
+      Customer customer = parseCustomerData(line);
+      customerData.add(customer);
+    }
+    reader.close();
+  }
+
+  public static void loadEmployeeData() throws IOException {
+    BufferedReader reader = new BufferedReader(new FileReader(employeeDataFile));
+    String line;
+    while ((line = reader.readLine()) != null) {
+     
+      Employee employee = parseEmployeeData(line);
+      employeeData.add(employee);
+      employeeLoginData.put(employee.getEmployeeID(), employee.getPassword());
+    }
+    reader.close();
+  }
+
+
+  // SaveData
+
+  
+  public static void saveCustomerData() throws IOException {
+    BufferedWriter writer = new BufferedWriter(new FileWriter(customerDataFile));
+    for (Customer customer : customerData) {
+      
+      writer.write(formatCustomerData(customer));
+      writer.newLine();
+    }
+    writer.close();
+  }
+
+
+  public static void saveEmployeeData() throws IOException {
+    BufferedWriter writer = new BufferedWriter(new FileWriter(employeeDataFile));
+    for (Employee employee : employeeData) {
+      writer.write(formatEmployeeData(employee));
+      writer.newLine();
+    }
+    writer.close();
+  }
+}
+
