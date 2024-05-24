@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class HomePage extends JDialog {
@@ -100,15 +101,29 @@ public class HomePage extends JDialog {
 //
 //            }
 //        });
-//        deleteProductButton.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//
-//            }
-//        });
+       logoutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    LoadDataSaveData.saveCustomerData();
+                    LoadDataSaveData.saveEmployeeData();
+                    LoadDataSaveData.saveInventoryData();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+                setVisible(false);
+                LoginForm loginForm = new LoginForm(parent);
+                loginForm.setVisible(true);
+
+            }
+        });
         billingButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                Billing bill = new Billing();
+                bill.createBill();
+                setVisible(true);
 
             }
         });
