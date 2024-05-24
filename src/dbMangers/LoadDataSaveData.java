@@ -60,8 +60,11 @@ public class LoadDataSaveData {
     public static void loadInventoryData() throws IOException {
         Scanner fileReader = new Scanner(invertoryDataFile);
         while (fileReader.hasNext()){
-            String catagory = String.valueOf(fileReader.next());
-            if(catagory == "Movie"){
+            System.out.println(inventoryData.getItems().size());
+            String catagory = fileReader.next();
+            System.out.println(catagory + inventoryData.getItems().size());
+
+            if(catagory.contains("Movie")){
                 int productId; String name; double price; int yearPublished; String genre; double discount; int numberOfItemsStocked; String director;
                 productId = Integer.parseInt(String.valueOf(fileReader.next()));
                 name = String.valueOf(fileReader.next());
@@ -70,9 +73,9 @@ public class LoadDataSaveData {
                 genre = String.valueOf(fileReader.next());
                 discount = Double.parseDouble(String.valueOf(fileReader.next()));
                 numberOfItemsStocked = Integer.parseInt(String.valueOf(fileReader.next()));
-                director = String.valueOf(fileReader.next());
+                director = String.valueOf(fileReader.nextLine());
                 LoadDataSaveData.getInventoryData().addItems(new Movie(productId,name,price,yearPublished,genre,discount,numberOfItemsStocked,director));
-            }if(catagory == "Music"){
+            }if(catagory.contains("Music")){
                 int productId; String name; double price; int yearPublished; String genre; double discount; int numberOfItemsStocked; String artistName;
                 productId = Integer.parseInt(String.valueOf(fileReader.next()));
                 name = String.valueOf(fileReader.next());
@@ -81,9 +84,9 @@ public class LoadDataSaveData {
                 genre = String.valueOf(fileReader.next());
                 discount = Double.parseDouble(String.valueOf(fileReader.next()));
                 numberOfItemsStocked = Integer.parseInt(String.valueOf(fileReader.next()));
-                artistName = String.valueOf(fileReader.next());
+                artistName = String.valueOf(fileReader.nextLine());
                 LoadDataSaveData.getInventoryData().addItems(new Music(productId,name,price,yearPublished,genre,discount,numberOfItemsStocked,artistName));
-            }if(catagory == "Game"){
+            }if(catagory.contains("Game")){
                 int productId; String name; double price; int yearPublished; String genre; double discount; int numberOfItemsStocked; String devoloper;
                 productId = Integer.parseInt(String.valueOf(fileReader.next()));
                 name = String.valueOf(fileReader.next());
@@ -92,7 +95,7 @@ public class LoadDataSaveData {
                 genre = String.valueOf(fileReader.next());
                 discount = Double.parseDouble(String.valueOf(fileReader.next()));
                 numberOfItemsStocked = Integer.parseInt(String.valueOf(fileReader.next()));
-                devoloper = String.valueOf(fileReader.next());
+                devoloper = String.valueOf(fileReader.nextLine());
                 LoadDataSaveData.getInventoryData().addItems(new Game(productId,name,price,yearPublished,genre,discount,numberOfItemsStocked,devoloper));
             }
         }
@@ -131,16 +134,22 @@ public class LoadDataSaveData {
         if(product instanceof Music){
             Music music = (Music) product;
             fileWriter.write("Music");
+            fileWriter.write(" ");
             fileWriter.write(music.toString());
+            fileWriter.write("\n");
         }
         else if(product instanceof Movie){
             Movie movie = (Movie) product;
             fileWriter.write("Music");
+            fileWriter.write("\n");
             fileWriter.write(movie.toString());
+            fileWriter.write("\n");
         }else if(product instanceof Game){
             Game game = (Game) product;
             fileWriter.write("Music");
+            fileWriter.write("\n");
             fileWriter.write(game.toString());
+            fileWriter.write("\n");
         }
     }
 

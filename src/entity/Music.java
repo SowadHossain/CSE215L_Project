@@ -32,11 +32,11 @@ public class Music extends StockableProduct implements Serializable {
 
 
     public String toString() {
-        return ""+ super.getProductId()+ " " +super.getName() +
+        return " "+ super.getProductId()+ " " +super.getName() +
                 " " + super.getPrice() + " " + super.getYearPublished() +
                 " " + super.getGenre() + " "+ super.getDiscount() +
                 " " + super.getNumberOfItemsInStock() +
-                " " + getArtistName() ;
+                " " + getArtistName() + " " ;
     }
 
 

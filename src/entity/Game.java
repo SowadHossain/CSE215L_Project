@@ -23,11 +23,11 @@ public class Game extends StockableProduct implements Serializable {
 
 
     public String toString() {
-        return ""+ super.getProductId()+ " " +super.getName() +
+        return " "+ super.getProductId()+ " " +super.getName() +
                 " " + super.getPrice() + " " + super.getYearPublished() +
                 " " + super.getGenre() + " "+ super.getDiscount() +
                 " " + super.getNumberOfItemsInStock() +
-                " " + getDeveloper() ;
+                " " + getDeveloper() +" ";
     }
 
     public String getInfo() {
