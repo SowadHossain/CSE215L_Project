@@ -57,7 +57,7 @@ public class Invoice {
         int movies = 0,musics = 0,games = 0;
 
         for (Product ob : cart){
-            for(StockableProduct sp : LoadDataSaveData.getInventoryData()){\
+            for(StockableProduct sp : LoadDataSaveData.getInventoryData()){
                 if(ob.getProductId() == sp.getProductId()){
                     if(sp.getClass().getName().contains("Movie")) {
                         movies++;
@@ -90,7 +90,7 @@ public class Invoice {
         return discountedPrice;
     }
 
-    public void nuberOfItemsStockOfEachSoldProduct(){
+    public void numberOfItemsStockOfEachSoldProduct(){
         System.out.println("Available Stocks of Sold Products in Inventory:");
         String st = "";
         for (Product p: cart) {
