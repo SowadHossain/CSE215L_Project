@@ -1,5 +1,7 @@
 package gui;
 
+import Exceptions.CustomerNotFoundException;
+import Exceptions.ProductNotFoundException;
 import dbMangers.LoadDataSaveData;
 import entity.Customer;
 
@@ -12,6 +14,7 @@ import java.util.Scanner;
 
 public class HomePage extends JDialog {
     private MainMenuCustomerButtonFunctions btnFucntion = new MainMenuCustomerButtonFunctions();
+    private MainMenuProductButtonFunctions btnFunctionP = new MainMenuProductButtonFunctions();
     private static boolean buttonPressed = false;
     private JButton newCustomerButton;
     private JButton productUpdateButton;
@@ -48,7 +51,11 @@ public class HomePage extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                btnFucntion.test();
+                try {
+                    btnFunctionP.updateProductInfo();
+                } catch (ProductNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
                 setVisible(true);
             }
         });
@@ -64,43 +71,38 @@ public class HomePage extends JDialog {
                 //MainMenuCustomerButtonFunctions;
 
         });
-//
-//        updateCustomerButton.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//
-//            }
-//        });
-//        customerDetailsButton.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//
-//            }
-//        });
-//        deleteCustomerDataButton.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//
-//            }
-//        });
-//        newProductButton.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//
-//            }
-//        });
-//        productUpdateButton.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//
-//            }
-//        });
-//        productDetailsButton.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//
-//            }
-//        });
+
+        updateCustomerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                try {
+                    btnFucntion.updateCustomerInfo();
+                } catch (CustomerNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
+                setVisible(true);
+
+            }
+        });
+        newProductButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                btnFunctionP.addNewProduct();
+                setVisible(true);
+            }
+        });
+        productDetailsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                btnFucntion.addCustomer();
+                setVisible(true);
+            }
+            //MainMenuCustomerButtonFunctions;
+
+        });
        logoutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

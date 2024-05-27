@@ -1,8 +1,8 @@
 import dbMangers.LoadDataSaveData;
 import entity.*;
 
-public class init {
-    public void start() {
+public class Initialize {
+    public static void start() {
         Customer c1 = new Customer("sowad", 999, 100, 1, "email@email.com");
         Customer c2 = new Customer("test", 998, 100, 1, "email2@email.com");
 

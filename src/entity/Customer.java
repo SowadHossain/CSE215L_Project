@@ -66,5 +66,8 @@ public class Customer implements Serializable {
 		
 	  return myString;
 	}
-	
+
+    public void setEmail(String newEmail) {
+        this.email = newEmail;
+    }
 }

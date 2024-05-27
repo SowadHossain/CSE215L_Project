@@ -1,20 +1,15 @@
 import dbMangers.LoadDataSaveData;
 import entity.*;
 import gui.LoginForm;
-import util.StockableProduct;
-
-import java.security.spec.ECField;
-import java.util.ArrayList;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
 
     public static void main(String[] args) {
-
         Inventory inventory = LoadDataSaveData.getInventoryData();
         try {
-            LoadDataSaveData.saveCustomerData();
+            LoadDataSaveData.loadCustomerData();
             LoadDataSaveData.loadCustomerData();
             LoadDataSaveData.loadInventoryData();
         }catch (Exception e){

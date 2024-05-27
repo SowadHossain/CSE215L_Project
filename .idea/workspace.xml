@@ -5,9 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="52315f5e-e0cd-44f9-9fc8-1d78fa0297d4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/dbMangers/LoadDataSaveData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dbMangers/LoadDataSaveData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/LoginFailedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/LoginFailedException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/customer_data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/customer_data.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/employee_data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/employee_data.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/inventory_data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/inventory_data.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Invertory Mangement and Billing Softwere/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Invertory Mangement and Billing Softwere/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Inventory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/HomePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/LoginFailedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exceptions/LoginFailedException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/LoginForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/LoginForm.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/LoginForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/MainMenuCustomerButtonFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/MainMenuCustomerButtonFunctions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/MainMenuProductButtonFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/MainMenuProductButtonFunctions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/init.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Initialize.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +81,10 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="Exceptions" />
+      <recent name="gui" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\java\Invertory Mangement and Billing Softwere\images" />
     </key>

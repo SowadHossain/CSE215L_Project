@@ -1,5 +1,7 @@
 package gui;
 
+import Exceptions.EmployeeAlreadyExistsException;
+import Exceptions.LoginFailedException;
 import dbMangers.LoadDataSaveData;
 import entity.Employee;
 
@@ -15,8 +17,6 @@ public class LoginForm extends JDialog {
     private JPasswordField passwordField1;
     private JButton loginButton;
     private JButton signInButton;
-    private JTextField idTextField;
-    private JButton submitButton;
     private Employee employee;
 
     public LoginForm(JFrame parent){
@@ -35,7 +35,6 @@ public class LoginForm extends JDialog {
                 String userPassword = String.valueOf(passwordField1.getPassword());
 
                 try {
-
                     employee = getAuthenticateUser(userId, userPassword);
                         dispose();
                         System.out.println("Login Successful:");
@@ -50,8 +49,24 @@ public class LoginForm extends JDialog {
                 }
             }
         });
+
+        signInButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            try {
+                setVisible(false);
+                SignIn.signIn();
+                setVisible(true);
+            } catch (EmployeeAlreadyExistsException ex) {
+                ex.printStackTrace();
+                setVisible(true);
+            }
+            }
+        });
+
         setVisible(true);
     }
+
     private Employee getAuthenticateUser(int id,String password) throws LoginFailedException {
         Employee employee = new Employee(null,0,null,null);
         try {
@@ -61,9 +76,11 @@ public class LoginForm extends JDialog {
         }
 
         final HashMap<Integer, String> map = LoadDataSaveData.getEmployeeLoginData();
+        System.out.println(id + password + map.containsKey(id) + (password.compareTo(map.get(id)) == 0));
         if(map.containsKey(id) & (password.compareTo(map.get(id)) == 0)){
             employee.setEmployeeID(id);
             employee.setPassword(map.get(id));
+            return employee;
         }
         throw new LoginFailedException();
     }

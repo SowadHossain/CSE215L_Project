@@ -67,7 +67,7 @@
             </constraints>
             <properties>
               <font name="JetBrains Mono" size="24" style="0"/>
-              <text value="Username"/>
+              <text value="UserID"/>
             </properties>
           </component>
           <component id="e9479" class="javax.swing.JLabel">

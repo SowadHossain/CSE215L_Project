@@ -25,7 +25,6 @@ public class Inventory {
         }
     }
     public Product getItem(int ProductID){
-        System.out.println(items.size());
         for (StockableProduct p : items){
             int id = p.getProductId();
             if(ProductID == id){

@@ -1,20 +1,18 @@
 package gui;
 
+import Exceptions.CustomerNotFoundException;
 import dbMangers.LoadDataSaveData;
 import entity.Customer;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MainMenuCustomerButtonFunctions {
-
+        static ArrayList<Customer> customers = LoadDataSaveData.getCustomerData();
         public MainMenuCustomerButtonFunctions(){
 
         }
-        public static void test(){
-            System.out.println("Test");
-            Scanner sc = new Scanner(System.in);
-            String a = sc.next();
-        }
+
         public static void addCustomer(){
             Scanner sc = new Scanner(System.in);
             System.out.print("Name : ");
@@ -48,6 +46,36 @@ public class MainMenuCustomerButtonFunctions {
             System.out.println("Number of Visits: " + currentCustomer.getNumberOfVisits());
 
     }
+    public void updateCustomerInfo() throws CustomerNotFoundException {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Customer ID:");
+        int customerID = scanner.nextInt();
+
+        for (Customer customer : customers) {
+            if (customer.getCustomerId() == customerID) {
+                System.out.println("Enter new name:");
+                String newName = scanner.nextLine();
+                customer.setName(newName);
+
+                System.out.println("Enter new total spent:");
+                double newTotalSpent = Double.parseDouble(scanner.nextLine());
+                customer.setTotalSpent(newTotalSpent);
+
+                System.out.println("Enter new number of visits:");
+                int newNumberOfVisits = Integer.parseInt(scanner.nextLine());
+                customer.setNumberOfVisits(newNumberOfVisits);
+
+                System.out.println("Enter new email:");
+                String newEmail = scanner.nextLine();
+                customer.setEmail(newEmail);
+
+                System.out.println("Customer information updated successfully.");
+                return;
+            }
+        }
+        throw new CustomerNotFoundException("Customer with ID " + customerID + " not found.");
+    }
+
 
 }
 
