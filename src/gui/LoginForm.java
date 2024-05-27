@@ -33,9 +33,13 @@ public class LoginForm extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 int userId =Integer.parseInt(usernameTxtField.getText());
                 String userPassword = String.valueOf(passwordField1.getPassword());
+
                 employee = getAuthenticateUser(userId,userPassword);
-                if(employee != null){
+                if(employee.getEmployeeID() != 0){
                     dispose();
+                    System.out.println("Login Successful:");
+                    System.out.println((employee.getEmployeeID()));
+                    System.out.println(employee.getName());
                     HomePage homePage = new HomePage(null);
                 }
                 else {
@@ -55,8 +59,9 @@ public class LoginForm extends JDialog {
         }catch (Exception e){
             e.printStackTrace();
         }
+
         final HashMap<Integer, String> map = LoadDataSaveData.getEmployeeLoginData();
-        if(map.containsKey(id)){
+        if(map.containsKey(id) & (password.compareTo(map.get(id)) == 0)){
             employee.setEmployeeID(id);
             employee.setPassword(map.get(id));
         }
