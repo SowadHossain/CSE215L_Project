@@ -30,20 +30,6 @@ public class LoadDataSaveData {
             }
         }
     }
-//        boolean flag = true;
-//        FileInputStream fileInputStream = new FileInputStream(customerDataFile);
-//        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-//        while (flag){
-//            try{
-//                Customer customer = (Customer) objectInputStream.readObject();
-//                customerData.add(customer);
-//            }catch (EOFException eofException){
-//                flag = false;
-//                objectInputStream.close();
-//            }catch (Exception e){
-//                objectInputStream.close();
-//            }
-//        }
 
     public static void loadEmployeeData() throws IOException {
         try (BufferedReader reader = new BufferedReader(new FileReader(employeeDataFile))) {
@@ -108,15 +94,6 @@ public class LoadDataSaveData {
                 writer.write(sb.toString());
             }
         }
-//        FileOutputStream fileOutputStream = new FileOutputStream(customerDataFile);
-//        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-//
-//        for (Customer customer : customerData) {
-//            objectOutputStream.writeObject(customer);
-//        }
-//
-//        objectOutputStream.close();
-//        fileOutputStream.close();
     }
 
   public static void saveEmployeeData() throws IOException {

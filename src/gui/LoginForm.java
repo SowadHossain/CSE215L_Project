@@ -34,15 +34,15 @@ public class LoginForm extends JDialog {
                 int userId =Integer.parseInt(usernameTxtField.getText());
                 String userPassword = String.valueOf(passwordField1.getPassword());
 
-                employee = getAuthenticateUser(userId,userPassword);
-                if(employee.getEmployeeID() != 0){
-                    dispose();
-                    System.out.println("Login Successful:");
-                    System.out.println((employee.getEmployeeID()));
-                    System.out.println(employee.getName());
-                    HomePage homePage = new HomePage(null);
-                }
-                else {
+                try {
+
+                    employee = getAuthenticateUser(userId, userPassword);
+                        dispose();
+                        System.out.println("Login Successful:");
+                        System.out.println((employee.getEmployeeID()));
+                        System.out.println(employee.getName());
+                        HomePage homePage = new HomePage(null);
+                } catch (LoginFailedException ex) {
                     JOptionPane.showMessageDialog(LoginForm.this,
                             "Invalid ID or Password",
                             "Try Again",
@@ -52,7 +52,7 @@ public class LoginForm extends JDialog {
         });
         setVisible(true);
     }
-    private Employee getAuthenticateUser(int id,String password){
+    private Employee getAuthenticateUser(int id,String password) throws LoginFailedException {
         Employee employee = new Employee(null,0,null,null);
         try {
             LoadDataSaveData.loadEmployeeData();
@@ -65,7 +65,7 @@ public class LoginForm extends JDialog {
             employee.setEmployeeID(id);
             employee.setPassword(map.get(id));
         }
-
-        return employee;
+        throw new LoginFailedException();
     }
 }
+

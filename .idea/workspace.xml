@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="52315f5e-e0cd-44f9-9fc8-1d78fa0297d4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/employee_data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/employee_data.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/inventory_data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/inventory_data.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dbMangers/LoadDataSaveData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dbMangers/LoadDataSaveData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/LoginFailedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/LoginFailedException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/LoginForm.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
