@@ -68,7 +68,21 @@ public class HomePage extends JDialog {
                 btnFucntion.addCustomer();
                 setVisible(true);
             }
-                //MainMenuCustomerButtonFunctions;
+            //MainMenuCustomerButtonFunctions;
+
+        });
+        deleteCustomerDataButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                try {
+                    btnFucntion.deleteCustomerData();
+                } catch (CustomerNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
+                setVisible(true);
+            }
+            //MainMenuCustomerButtonFunctions;
 
         });
 
@@ -93,14 +107,30 @@ public class HomePage extends JDialog {
                 setVisible(true);
             }
         });
+        deleteProductButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+
+                try {
+                    btnFunctionP.deleteProduct();
+                } catch (ProductNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
+                setVisible(true);
+            }
+        });
         productDetailsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                btnFucntion.addCustomer();
+                try {
+                    btnFunctionP.getProductDetails();
+                } catch (ProductNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
                 setVisible(true);
             }
-            //MainMenuCustomerButtonFunctions;
 
         });
        logoutButton.addActionListener(new ActionListener() {

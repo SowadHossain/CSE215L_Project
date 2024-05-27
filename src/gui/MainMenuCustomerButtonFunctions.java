@@ -4,10 +4,12 @@ import Exceptions.CustomerNotFoundException;
 import dbMangers.LoadDataSaveData;
 import entity.Customer;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MainMenuCustomerButtonFunctions {
+        Scanner scanner = new Scanner(System.in);
         static ArrayList<Customer> customers = LoadDataSaveData.getCustomerData();
         public MainMenuCustomerButtonFunctions(){
 
@@ -47,7 +49,7 @@ public class MainMenuCustomerButtonFunctions {
 
     }
     public void updateCustomerInfo() throws CustomerNotFoundException {
-        Scanner scanner = new Scanner(System.in);
+
         System.out.print("Customer ID:");
         int customerID = scanner.nextInt();
 
@@ -74,6 +76,29 @@ public class MainMenuCustomerButtonFunctions {
             }
         }
         throw new CustomerNotFoundException("Customer with ID " + customerID + " not found.");
+    }
+
+    public void deleteCustomerData() throws CustomerNotFoundException {
+        boolean found = false;
+        System.out.println("Customer ID:");
+        int customerID = scanner.nextInt();
+        for (Customer customer : customers) {
+            if (customer.getCustomerId() == customerID) {
+                customers.remove(customer);
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            throw new CustomerNotFoundException("Customer with ID " + customerID + " not found.");
+        } else {
+            System.out.println("Customer with ID " + customerID + " deleted successfully.");
+            try {
+                LoadDataSaveData.saveCustomerData();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
 

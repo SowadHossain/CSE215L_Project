@@ -119,6 +119,49 @@ public class MainMenuProductButtonFunctions {
 
 
     }
+
+    public void deleteProduct() throws ProductNotFoundException {
+        System.out.print("Product ID: ");
+        int productId = scanner.nextInt();
+
+        boolean found = false;
+        for (Object object : inventory) {
+            if (object instanceof Music) {
+                Music music = (Music) object;
+                if (music.getProductId() == productId) {
+                    inventory.remove(music);
+                    found = true;
+                    break;
+                }
+            }
+            else if (object instanceof Movie) {
+                Movie movie = (Movie) object;
+                if (movie.getProductId() == productId) {
+                    inventory.remove(movie);
+                    found = true;
+                    break;
+                }
+            }
+            else if (object instanceof Game) {
+                Game game = (Game) object;
+                if (game.getProductId() == productId) {
+                    inventory.remove(game);
+                    found = true;
+                    break;
+                }
+            }
+        }
+        if (!found) {
+            throw new ProductNotFoundException("Product with ID " + productId + " not found.");
+        } else {
+            System.out.println("Product with ID " + productId + " deleted successfully.");
+            try {
+                LoadDataSaveData.saveInventoryData();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
     public void getProductDetails() throws ProductNotFoundException {
 
         System.out.print("Product Id: ");
