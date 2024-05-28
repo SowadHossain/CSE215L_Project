@@ -27,6 +27,7 @@ public class Billing {
                 break;
             } else if (input.equalsIgnoreCase("show")) {
                 System.out.println(invoice.getInvoice());
+                continue;
             }
 
             try {
@@ -43,9 +44,5 @@ public class Billing {
                 System.out.println("Invalid input. Please enter a valid product id and quantity.");
             }
         }
-
-
-
-
     }
 }

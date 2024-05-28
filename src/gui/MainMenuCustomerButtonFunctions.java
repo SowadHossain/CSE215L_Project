@@ -11,9 +11,7 @@ import java.util.Scanner;
 public class MainMenuCustomerButtonFunctions {
         Scanner scanner = new Scanner(System.in);
         static ArrayList<Customer> customers = LoadDataSaveData.getCustomerData();
-        public MainMenuCustomerButtonFunctions(){
 
-        }
 
         public static void addCustomer(){
             Scanner sc = new Scanner(System.in);
