@@ -1,15 +1,32 @@
+import dbMangers.LoadDataSaveData;
+import entity.*;
+import gui.LoginForm;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+    public static void main(String[] args) {
+
+        //Initialize.start();
+
+        Inventory inventory = LoadDataSaveData.getInventoryData();
+        try {
+            LoadDataSaveData.loadCustomerData();
+            LoadDataSaveData.loadCustomerData();
+            LoadDataSaveData.loadInventoryData();
+        }catch (Exception e){
+
         }
+
+        Invoice invoice = new Invoice();
+
+        invoice.addProduct(inventory.getItem(101));
+        invoice.addProduct(inventory.getItem(201));
+        invoice.addProduct(inventory.getItem(102));
+
+
+        LoginForm loginForm = new LoginForm(null);
     }
+
 }

@@ -1,0 +1,155 @@
+Name: Kodaline
+util.Product Id: 101
+Year Published: 2010
+Genre: Inde
+Discount: 2.0
+Price: 5.0
+Artist's Name: Alex Turner
+
+Name: Kodaline2
+util.Product Id: 102
+Year Published: 2010
+Genre: Inde
+Discount: 2.0
+Price: 5.0
+Artist's Name: Alex Turner
+
+Name: Kodaline3
+util.Product Id: 103
+Year Published: 2010
+Genre: Inde
+Discount: 2.0
+Price: 5.0
+Artist's Name: Alex Turner
+
+Name: Kodaline4
+util.Product Id: 104
+Year Published: 2010
+Genre: Inde
+Discount: 2.0
+Price: 5.0
+Artist's Name: Alex Turner
+
+Name: Kodaline5
+util.Product Id: 105
+Year Published: 2010
+Genre: Inde
+Discount: 2.0
+Price: 5.0
+Artist's Name: Alex Turner
+
+Name: Kodaline6
+util.Product Id: 106
+Year Published: 2010
+Genre: Inde
+Discount: 2.0
+Price: 5.0
+Artist's Name: Alex Turner
+
+Name: Good Will Hunting
+util.Product Id: 201
+Year Published: 1997
+Genre: Drama
+Discount: 3.0
+Price: 5.0
+Director's Name: Gus Van Sant
+
+Name: Life Is Beautiful
+util.Product Id: 202
+Year Published: 1997
+Genre: Comedy-Drama
+Discount: 2.6
+Price: 20.0
+Director's Name: Roberto Benigni
+
+Name: what's eating gilbert grape
+util.Product Id: 203
+Year Published: 1993
+Genre: Drama
+Discount: 6.4
+Price: 20.0
+Director's Name: Lasse Hallstrom
+
+Name: The Godfather
+util.Product Id: 204
+Year Published: 1972
+Genre: Crime
+Discount: 0.01
+Price: 15.0
+Director's Name: Francis Ford Coppola
+
+Name: The Rainmaker
+util.Product Id: 205
+Year Published: 1997
+Genre: Crime
+Discount: 12.0
+Price: 5.0
+Director's Name: Francis Ford Coppola
+
+Name: Apocalypse Now
+util.Product Id: 206
+Year Published: 1979
+Genre: Drama
+Discount: 4.9
+Price: 24.0
+Director's Name: Francis Ford Coppola
+
+Name: Leon the Professional
+util.Product Id: 207
+Year Published: 1994
+Genre: Drama
+Discount: 2.7
+Price: 21.0
+Director's Name: Luc Besson
+
+Name: Red Dead Redemption 2
+util.Product Id: 301
+Year Published: 2018
+Genre: Survival
+Discount: 3.7
+Price: 29.0
+Developer's Name: RockStar
+
+Name: God of War
+util.Product Id: 302
+Year Published: 2018
+Genre: Action
+Discount: 5.6
+Price: 12.0
+Developer's Name: Javaground
+
+Name: Grand Theft Auto V
+util.Product Id: 303
+Year Published: 2017
+Genre: Action
+Discount: 2.3
+Price: 13.0
+Developer's Name: RockStar
+
+
+----------  Input Completed ----------
+
+Date - 2024-05-28 00:00:00
+Name: Alex Turner, Price: 5.0
+Name: Alex Turner, Price: 5.0
+Name: Good Will Hunting, Price: 5.0
+Name: Life Is Beautiful, Price: 20.0
+Name: Red Dead Redemption 2, Price: 29.0
+Name: God of War, Price: 12.0
+Total Price : 76.0
+Price after discount: 73.385
+
+----------  This is the invoice ----------
+
+God of War
+Grand Theft Auto V
+Red Dead Redemption 2
+
+----------  These are the available games ----------
+
+The Rainmaker
+The Godfather
+Apocalypse Now
+
+----------  These are the movies available of the above mentioned director ----------
+

@@ -1,0 +1,157 @@
+Index: src/StockableProduct.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>public class StockableProduct {\r\n}\r\n
+===================================================================
+diff --git a/src/StockableProduct.java b/src/StockableProduct.java
+--- a/src/StockableProduct.java	
++++ b/src/StockableProduct.java	
+@@ -1,2 +1,38 @@
+-public class StockableProduct {
+-}
++public class StockableProduct extends Product implements Stockable {
++
++    private int numberOfItemsInStock;
++
++    public StockableProduct(String name, String productId, double price, String genre, int yearPublished, double discount, int numberOfItemsInStock) {
++        super(name, productId, price, genre, yearPublished, discount);
++        this.numberOfItemsInStock = numberOfItemsInStock;
++    }
++
++    @Override
++    public void addStock(int numItems) {
++        this.numberOfItemsInStock += numItems;
++    }
++
++    @Override
++    public void removeStock(int numItems) throws InsufficientStockException {
++        if (numItems > this.numberOfItemsInStock) {
++            throw new InsufficientStockException("Insufficient stock to remove " + numItems + " items. Only " + this.numberOfItemsInStock + " in stock.");
++        }
++        this.numberOfItemsInStock -= numItems;
++    }
++
++    @Override
++    public void editStock(int num) {
++
++    }
++
++    // You can add other methods related to stock management here,
++    // such as checking stock availability or setting stock levels
++
++    public int getNumberOfItemsInStock() {
++        return numberOfItemsInStock;
++    }
++
++    public void setNumberOfItemsInStock(int numberOfItemsInStock) {
++        this.numberOfItemsInStock = numberOfItemsInStock;
++    }
++}
+\ No newline at end of file
+Index: src/Stockable.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>public interface Stockable {\r\n    public void addStock(int num);\r\n    public void removeStock(int num);\r\n    public void editStock(int num);\r\n}\r\n
+===================================================================
+diff --git a/src/Stockable.java b/src/Stockable.java
+--- a/src/Stockable.java	
++++ b/src/Stockable.java	
+@@ -1,5 +1,5 @@
+ public interface Stockable {
+     public void addStock(int num);
+-    public void removeStock(int num);
++    public void removeStock(int num) throws InsufficientStockException;
+     public void editStock(int num);
+ }
+Index: src/Product.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>public class Product {\r\n}\r\n
+===================================================================
+diff --git a/src/Product.java b/src/Product.java
+--- a/src/Product.java	
++++ b/src/Product.java	
+@@ -1,2 +1,83 @@
++
+ public class Product {
++
++    private String name;
++    private String productId;
++    private double price;
++    private String genre; // Can be changed to an enum for specific categories if needed
++    private int yearPublished;
++    private double discount;
++
++    public Product(String name, String productId, double price, String genre, int yearPublished, double discount) {
++        this.name = name;
++        this.productId = productId;
++        this.price = price;
++        this.genre = genre;
++        this.yearPublished = yearPublished;
++        this.discount = discount;
++    }
++
++    public String getName() {
++        return name;
++    }
++
++    public void setName(String name) {
++        this.name = name;
++    }
++
++    public String getProductId() {
++        return productId;
++    }
++
++    public void setProductId(String productId) {
++        this.productId = productId;
++    }
++
++    public double getPrice() {
++        return price;
++    }
++
++    public void setPrice(double price) {
++        this.price = price;
++    }
++
++    public String getGenre() {
++        return genre;
++    }
++
++    public void setGenre(String genre) {
++        this.genre = genre;
++    }
++
++    public int getYearPublished() {
++        return yearPublished;
++    }
++
++    public void setYearPublished(int yearPublished) {
++        this.yearPublished = yearPublished;
++    }
++
++    public double getDiscount() {
++        return discount;
++    }
++
++    public void setDiscount(double discount) {
++        this.discount = discount;
++    }
++
++    public String getInfo() {
++        // This method can be customized to return product information in a specific format
++        StringBuilder info = new StringBuilder();
++        info.append("Name: ").append(name).append("\n");
++        info.append("Product ID: ").append(productId).append("\n");
++        info.append("Price: $").append(String.format("%.2f", price)).append("\n");
++        info.append("Genre: ").append(genre).append("\n");
++        info.append("Year Published: ").append(yearPublished).append("\n");
++        return info.toString();
++    }
++
++    public double calculateFinalPrice() {
++        // This method can be used to calculate the final price after applying discount
++        return price * (1 - discount);
++    }
+ }

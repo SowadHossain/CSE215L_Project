@@ -1,0 +1,16 @@
+Music,101,Alex Turner,5.0,2010,Inde,2.0,50,Alex Turner
+Music,102,Alex Turner,5.0,2010,Inde,2.0,50,Alex Turner
+Music,103,Alex Turner,5.0,2010,Inde,2.0,50,Alex Turner
+Music,104,Alex Turner,5.0,2010,Inde,2.0,50,Alex Turner
+Music,105,Alex Turner,5.0,2010,Inde,2.0,50,Alex Turner
+Music,106,Alex Turner,5.0,2010,Inde,2.0,50,Alex Turner
+Movie,201,Good Will Hunting,5.0,1997,Drama,3.0,50,Gus Van Sant
+Movie,202,Life Is Beautiful,20.0,1997,Comedy-Drama,2.6,126,Roberto Benigni
+Movie,203,what's eating gilbert grape,20.0,1993,Drama,6.4,122,Lasse Hallstrom
+Movie,204,The Godfather,15.0,1972,Crime,0.01,125,Francis Ford Coppola
+Movie,205,The Rainmaker,5.0,1997,Crime,12.0,127,Francis Ford Coppola
+Movie,206,Apocalypse Now,24.0,1979,Drama,4.9,121,Francis Ford Coppola
+Movie,207,Leon the Professional,21.0,1994,Drama,2.7,124,Luc Besson
+Game,301,Red Dead Redemption 2,29.0,2018,Survival,3.7,560,RockStar
+Game,302,God of War,12.0,2018,Action,5.6,567,Javaground
+Game,303,Grand Theft Auto V,13.0,2017,Action,2.3,565,RockStar
