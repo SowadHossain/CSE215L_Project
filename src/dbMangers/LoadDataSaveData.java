@@ -131,9 +131,9 @@ public class LoadDataSaveData {
                           .append("\n");
                             writer.write(sb.toString());
               } else if (product instanceof Music) {
-                  sb.append("Music");
+
                   Music music = (Music) product;
-                  sb.append("Movie");
+                  sb.append("Music");
                   sb.append(",").append(music.getProductId())
                           .append(",").append(music.getName())
                           .append(",").append(music.getPrice())
@@ -145,9 +145,9 @@ public class LoadDataSaveData {
                           .append("\n");
                   writer.write(sb.toString());
               } else if (product instanceof Game) {
-                  sb.append("Game");
+
                   Game game = (Game) product;
-                  sb.append("Movie");
+                  sb.append("Game");
                   sb.append(",").append(game.getProductId())
                           .append(",").append(game.getName())
                           .append(",").append(game.getPrice())

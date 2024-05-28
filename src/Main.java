@@ -7,6 +7,9 @@ import gui.LoginForm;
 public class Main {
 
     public static void main(String[] args) {
+
+        //Initialize.start();
+
         Inventory inventory = LoadDataSaveData.getInventoryData();
         try {
             LoadDataSaveData.loadCustomerData();
