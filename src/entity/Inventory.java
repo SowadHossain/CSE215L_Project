@@ -52,13 +52,12 @@ public class Inventory {
         //items.sort((a,b) -> a.getPrice().compare(b.getPrice()));
         //using bubble sort
         for (int i = 0; i < items.size(); i++) {
-            for (int j = 0; j < items.size(); j++) {
+            for (int j = 0; j < items.size() - 1; j++) {
                 if(items.get(j).getPrice() > items.get(j+1).getPrice()){
                     StockableProduct temp = items.get(j);
                     items.set(j,items.get(j+1));
                     items.set(j+1,temp);
                 }
-
             }
         }
     }
@@ -67,7 +66,7 @@ public class Inventory {
     }
     public void sortByAvailableStock(){
         for (int i = 0; i < items.size(); i++) {
-            for (int j = 0; j < items.size(); j++) {
+            for (int j = 0; j < items.size() - 1; j++) {
                 if(items.get(j).getNumberOfItemsInStock() < items.get(j+1).getNumberOfItemsInStock()){
                     StockableProduct temp = items.get(j);
                     items.set(j,items.get(j+1));
