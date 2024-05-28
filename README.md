@@ -2,24 +2,42 @@
 
 
 
+
 MD MAHMUDUR RAHMAN TONOY
-ID : 2322988642SOWAD HOSSAIN
-ID : 2323614042MD . ABU ZAWAD
-ID : 2322739642Project Topic : Inventory Management and Billing Software
+
+ID : 2322988642
+
+
+SOWAD HOSSAIN
+
+ID : 2323614042
+
+
+MD . ABU ZAWAD
+
+ID : 2322739642
+
+# Project Topic : Inventory Management and Billing Software
+
 Due date : 24 / 05 / 2024
+
 Course  name : CSE215L
+
 Inventory Management and Billing software        24.05.2024
-Goals
+
+
+# Goals
 Develop an Inventory Management and Billing software for a CD & VINYL SHOP. They have categorized their products into three main segments: movies, games and music. As a startup they are also offering different discounts on their products to attract customers and may vary from product to product, and they are calling it product discount. They have a special discount named full house which is if someone buys at least two products from each category, he/she will get a discount of 50% on the total price. When billing an invoice if both of the discounts are eligible, the company wants to compare them. The discount that is larger of the two will be applied. The company wants you to keep a functionality which will show them the inventory. They also want to be able to sort their inventory according to: price and available stocks. 
 
 
-Overview
+# Overview
+
 This is basically a user-friendly program of a CD & Vinyl shop that sells movies , games and songs . Users can login to the program and ask for the thing they need .  
 Uml Diagram
 
-Class Descriptions
+# Class Descriptions
 
-Product Class
+## Product Class
 
 The "Product" class serves as an abstract blueprint for various types of products within a retail system. Here"s a breakdown of its features:
 
@@ -34,7 +52,7 @@ The "Product" class serves as an abstract blueprint for various types of product
   
 This class lays the foundation for implementing various product types with specialized behavior and information, promoting code reuse and extensibility within the retail system architecture.
 
-Stockable Product Class
+## Stockable Product Class
 
 
 The "StockableProduct" class extends the "Product" class and implements the "Stockable" interface, introducing functionality related to stock management for retail products. Here"s an overview of its features:
@@ -63,7 +81,8 @@ This class extends the functionality of the "Product" class to incorporate stock
 
 
 This is a class which extends the Product class and implements the Stockable interface and where it can add and remove new stocks and follow the instructions  
-Game Class
+
+## Game Class
 
 
 The "Game" class extends the "StockableProduct" class and implements the "Serializable" interface, defining a specialized type of product tailored for games within a retail system. Here"s an overview of its features:
@@ -78,13 +97,15 @@ The "Game" class extends the "StockableProduct" class and implements the "Serial
 
 
 This class encapsulates the attributes and behavior specific to games, enhancing the flexibility and functionality of the retail system's product management capabilities.
-Music Class
+
+## Music Class
+
 As we have a type of product named Music, we have created a class called “Music” which is a specialized class of the StockableProduct class and it has the  almost same getters, setters and constructors as the Game class.
 Movie Class
 Movie is also a specialized class of Stockable Product class which has a String director variable and basic getters and setters to generate the information like the other Game and Music classes.
 
 
-Inventory Class
+## Inventory Class
 
 
 The "Inventory" class represents the stock inventory of a retail system, managing a collection of "StockableProduct" items. Here"s an overview of its functionalities:
@@ -114,7 +135,7 @@ The "Inventory" class represents the stock inventory of a retail system, managin
 The "Inventory" class serves as a central component for managing and organizing the stock inventory of the retail system, offering essential operations such as adding, removing, retrieving, and sorting inventory items.
 
 
-Invoice class
+## Invoice class
 
 The "Invoice" class manages invoices for retail transactions within the system, providing functionalities related to cart management, price calculation, and invoice generation. Here"s an overview of its features:
 
@@ -166,66 +187,66 @@ The "LoadDataSaveData" class facilitates the management of employee, customer, a
 
 - File writing using "BufferedWriter" and "FileWriter", though there"s a serialization discrepancy labeling "Music" and "Game" products as "Movie" in the inventory data file.
  
-Custom Exceptions
+## Custom Exceptions
 There are many customer exceptions used in this program to run it more smoothly
 1.CustomerNotFoundException
 2.EmployeeAlreadyExistsException
 3.LoginFailedException
 4.ProductNotFoundException
-GUI
+## GUI
 A Java GUI, or Graphical User Interface, is a way to create graphical interfaces for applications written in Java. It allows users to interact with the program through visual elements like buttons, menus, text fields, and more.
  
 Java GUI is used in this project to make this project more user friendly  . The effect will be noticed in the login screen and then after login , some buttons will pop up and the user can select their desired options
-APPLICATION
+## APPLICATION
 This code has a simple application system which takes orders from the customers and generates a bill . It can also save the customer details including the total money they spent on this . It can give discounts to customers on various products .
-Limitations
+## Limitations
 This program has some limitations like
 1.It does not take any feedback from the client
 2. It is a user friendly program but not as user friendly as some other programs
 3.Database is not used in this program
-Future works
+## Future works
 This program have a lots of potentials if some changes are made in the future like
 Adding database system into this program
 Keeping a feedback form for the customers
 Updating the customers about our new offers and stocks through this program
-Contributions
-Zawad  -
+# Contributions
+## Zawad  -
 
 
-Class:
-Product
-StockableProduct
-Stockable
-Custom Exceptions
+### Class:
+* Product
+* StockableProduct
+* Stockable
+* Custom Exceptions
 
-Methods:
-addNewProduct()
-deleteProduct()
-getProductDetails()
-customerInfo()
-Tonoy -
+### Methods:
+* addNewProduct()
+* deleteProduct()
+* getProductDetails()
+* customerInfo()
+## Tonoy -
 
-Class:
-Game 
-Movie 
-Music
-Driver
-SignIn
+### Class:
+* Game 
+* Movie 
+* Music
+* Driver
+* SignIn
 
-Methods:
-addCustomer()
-customerInfo()
-deleteCustomerData
-Sowad -
+### Methods:
+* addCustomer()
+* customerInfo()
+* deleteCustomerData
+## Sowad -
 
-Class:
-Invoice
-Inventory
-LoadDataSaveData
-LoginForm
-HomePage
-Billing
+### Class:
+* Invoice
+* Inventory
+* LoadDataSaveData
+* LoginForm
+* HomePage
+* Billing
 
-Methods:
-updateProductInfo()
-updateCustomerInfo()
+### Methods:
+* updateProductInfo()
+* updateCustomerInfo()
